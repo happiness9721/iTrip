@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A000FC5194AD72900FB5289 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC4194AD72900FB5289 /* Foundation.framework */; };
+		2A000FC7194AD72900FB5289 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC6194AD72900FB5289 /* CoreGraphics.framework */; };
+		2A000FC9194AD72900FB5289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC8194AD72900FB5289 /* UIKit.framework */; };
+		2A000FCF194AD72900FB5289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FCD194AD72900FB5289 /* InfoPlist.strings */; };
+		2A000FD1194AD72900FB5289 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FD0194AD72900FB5289 /* main.m */; };
+		2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FD4194AD72900FB5289 /* AppDelegate.m */; };
+		2A000FD8194AD72900FB5289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FD6194AD72900FB5289 /* Main.storyboard */; };
+		2A000FDB194AD72900FB5289 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FDA194AD72900FB5289 /* ViewController.m */; };
+		2A000FDD194AD72900FB5289 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FDC194AD72900FB5289 /* Images.xcassets */; };
+		2A000FE4194AD72900FB5289 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FE3194AD72900FB5289 /* XCTest.framework */; };
+		2A000FE5194AD72900FB5289 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC4194AD72900FB5289 /* Foundation.framework */; };
+		2A000FE6194AD72900FB5289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC8194AD72900FB5289 /* UIKit.framework */; };
+		2A000FEE194AD72900FB5289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FEC194AD72900FB5289 /* InfoPlist.strings */; };
+		2A000FF0194AD72900FB5289 /* iTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FEF194AD72900FB5289 /* iTripTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A000FE7194AD72900FB5289 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A000FB9194AD72900FB5289 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A000FC0194AD72900FB5289;
+			remoteInfo = iTrip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A000FC1194AD72900FB5289 /* iTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A000FC4194AD72900FB5289 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2A000FC6194AD72900FB5289 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2A000FC8194AD72900FB5289 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2A000FCC194AD72900FB5289 /* iTrip-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTrip-Info.plist"; sourceTree = "<group>"; };
+		2A000FCE194AD72900FB5289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2A000FD0194AD72900FB5289 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A000FD2194AD72900FB5289 /* iTrip-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTrip-Prefix.pch"; sourceTree = "<group>"; };
+		2A000FD3194AD72900FB5289 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2A000FD4194AD72900FB5289 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2A000FD7194AD72900FB5289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A000FD9194AD72900FB5289 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2A000FDA194AD72900FB5289 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2A000FDC194AD72900FB5289 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2A000FE2194AD72900FB5289 /* iTripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A000FE3194AD72900FB5289 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2A000FEB194AD72900FB5289 /* iTripTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTripTests-Info.plist"; sourceTree = "<group>"; };
+		2A000FED194AD72900FB5289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2A000FEF194AD72900FB5289 /* iTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTripTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A000FBE194AD72900FB5289 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A000FC7194AD72900FB5289 /* CoreGraphics.framework in Frameworks */,
+				2A000FC9194AD72900FB5289 /* UIKit.framework in Frameworks */,
+				2A000FC5194AD72900FB5289 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A000FDF194AD72900FB5289 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A000FE4194AD72900FB5289 /* XCTest.framework in Frameworks */,
+				2A000FE6194AD72900FB5289 /* UIKit.framework in Frameworks */,
+				2A000FE5194AD72900FB5289 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A000FB8194AD72900FB5289 = {
+			isa = PBXGroup;
+			children = (
+				2A000FCA194AD72900FB5289 /* iTrip */,
+				2A000FE9194AD72900FB5289 /* iTripTests */,
+				2A000FC3194AD72900FB5289 /* Frameworks */,
+				2A000FC2194AD72900FB5289 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A000FC2194AD72900FB5289 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A000FC1194AD72900FB5289 /* iTrip.app */,
+				2A000FE2194AD72900FB5289 /* iTripTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A000FC3194AD72900FB5289 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A000FC4194AD72900FB5289 /* Foundation.framework */,
+				2A000FC6194AD72900FB5289 /* CoreGraphics.framework */,
+				2A000FC8194AD72900FB5289 /* UIKit.framework */,
+				2A000FE3194AD72900FB5289 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A000FCA194AD72900FB5289 /* iTrip */ = {
+			isa = PBXGroup;
+			children = (
+				2A000FD3194AD72900FB5289 /* AppDelegate.h */,
+				2A000FD4194AD72900FB5289 /* AppDelegate.m */,
+				2A000FD6194AD72900FB5289 /* Main.storyboard */,
+				2A000FD9194AD72900FB5289 /* ViewController.h */,
+				2A000FDA194AD72900FB5289 /* ViewController.m */,
+				2A000FDC194AD72900FB5289 /* Images.xcassets */,
+				2A000FCB194AD72900FB5289 /* Supporting Files */,
+			);
+			path = iTrip;
+			sourceTree = "<group>";
+		};
+		2A000FCB194AD72900FB5289 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A000FCC194AD72900FB5289 /* iTrip-Info.plist */,
+				2A000FCD194AD72900FB5289 /* InfoPlist.strings */,
+				2A000FD0194AD72900FB5289 /* main.m */,
+				2A000FD2194AD72900FB5289 /* iTrip-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2A000FE9194AD72900FB5289 /* iTripTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A000FEF194AD72900FB5289 /* iTripTests.m */,
+				2A000FEA194AD72900FB5289 /* Supporting Files */,
+			);
+			path = iTripTests;
+			sourceTree = "<group>";
+		};
+		2A000FEA194AD72900FB5289 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A000FEB194AD72900FB5289 /* iTripTests-Info.plist */,
+				2A000FEC194AD72900FB5289 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A000FC0194AD72900FB5289 /* iTrip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A000FF3194AD72900FB5289 /* Build configuration list for PBXNativeTarget "iTrip" */;
+			buildPhases = (
+				2A000FBD194AD72900FB5289 /* Sources */,
+				2A000FBE194AD72900FB5289 /* Frameworks */,
+				2A000FBF194AD72900FB5289 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iTrip;
+			productName = iTrip;
+			productReference = 2A000FC1194AD72900FB5289 /* iTrip.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A000FE1194AD72900FB5289 /* iTripTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A000FF6194AD72900FB5289 /* Build configuration list for PBXNativeTarget "iTripTests" */;
+			buildPhases = (
+				2A000FDE194AD72900FB5289 /* Sources */,
+				2A000FDF194AD72900FB5289 /* Frameworks */,
+				2A000FE0194AD72900FB5289 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A000FE8194AD72900FB5289 /* PBXTargetDependency */,
+			);
+			name = iTripTests;
+			productName = iTripTests;
+			productReference = 2A000FE2194AD72900FB5289 /* iTripTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A000FB9194AD72900FB5289 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "楊凱霖";
+				TargetAttributes = {
+					2A000FE1194AD72900FB5289 = {
+						TestTargetID = 2A000FC0194AD72900FB5289;
+					};
+				};
+			};
+			buildConfigurationList = 2A000FBC194AD72900FB5289 /* Build configuration list for PBXProject "iTrip" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A000FB8194AD72900FB5289;
+			productRefGroup = 2A000FC2194AD72900FB5289 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A000FC0194AD72900FB5289 /* iTrip */,
+				2A000FE1194AD72900FB5289 /* iTripTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A000FBF194AD72900FB5289 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A000FDD194AD72900FB5289 /* Images.xcassets in Resources */,
+				2A000FCF194AD72900FB5289 /* InfoPlist.strings in Resources */,
+				2A000FD8194AD72900FB5289 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A000FE0194AD72900FB5289 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A000FEE194AD72900FB5289 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A000FBD194AD72900FB5289 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A000FDB194AD72900FB5289 /* ViewController.m in Sources */,
+				2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */,
+				2A000FD1194AD72900FB5289 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A000FDE194AD72900FB5289 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A000FF0194AD72900FB5289 /* iTripTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A000FE8194AD72900FB5289 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A000FC0194AD72900FB5289 /* iTrip */;
+			targetProxy = 2A000FE7194AD72900FB5289 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A000FCD194AD72900FB5289 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A000FCE194AD72900FB5289 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2A000FD6194AD72900FB5289 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A000FD7194AD72900FB5289 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A000FEC194AD72900FB5289 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A000FED194AD72900FB5289 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A000FF1194AD72900FB5289 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2A000FF2194AD72900FB5289 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A000FF4194AD72900FB5289 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTrip/iTrip-Prefix.pch";
+				INFOPLIST_FILE = "iTrip/iTrip-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2A000FF5194AD72900FB5289 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTrip/iTrip-Prefix.pch";
+				INFOPLIST_FILE = "iTrip/iTrip-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2A000FF7194AD72900FB5289 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iTrip.app/iTrip";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTrip/iTrip-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iTripTests/iTripTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2A000FF8194AD72900FB5289 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iTrip.app/iTrip";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTrip/iTrip-Prefix.pch";
+				INFOPLIST_FILE = "iTripTests/iTripTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A000FBC194AD72900FB5289 /* Build configuration list for PBXProject "iTrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A000FF1194AD72900FB5289 /* Debug */,
+				2A000FF2194AD72900FB5289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A000FF3194AD72900FB5289 /* Build configuration list for PBXNativeTarget "iTrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A000FF4194AD72900FB5289 /* Debug */,
+				2A000FF5194AD72900FB5289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2A000FF6194AD72900FB5289 /* Build configuration list for PBXNativeTarget "iTripTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A000FF7194AD72900FB5289 /* Debug */,
+				2A000FF8194AD72900FB5289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A000FB9194AD72900FB5289 /* Project object */;
+}
