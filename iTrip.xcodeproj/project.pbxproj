@@ -20,7 +20,6 @@
 		2A000FE6194AD72900FB5289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC8194AD72900FB5289 /* UIKit.framework */; };
 		2A000FEE194AD72900FB5289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FEC194AD72900FB5289 /* InfoPlist.strings */; };
 		2A000FF0194AD72900FB5289 /* iTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FEF194AD72900FB5289 /* iTripTests.m */; };
-		2A321A6C194C425E00B599BF /* iTrip.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2A321A6B194C425E00B599BF /* iTrip.sqlite */; };
 		2A321A6E194C43F800B599BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A321A6D194C43F800B599BF /* libsqlite3.dylib */; };
 		2A321A71194C461200B599BF /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A70194C461200B599BF /* AddTripViewController.m */; };
 		2A321AA2194C527700B599BF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A9A194C527700B599BF /* Trip.m */; };
@@ -63,7 +62,6 @@
 		2A000FEB194AD72900FB5289 /* iTripTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTripTests-Info.plist"; sourceTree = "<group>"; };
 		2A000FED194AD72900FB5289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A000FEF194AD72900FB5289 /* iTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTripTests.m; sourceTree = "<group>"; };
-		2A321A6B194C425E00B599BF /* iTrip.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTrip.sqlite; path = ../../../../iTrip.sqlite; sourceTree = "<group>"; };
 		2A321A6D194C43F800B599BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2A321A6F194C461200B599BF /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
 		2A321A70194C461200B599BF /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
@@ -75,6 +73,7 @@
 		2A321A9F194C527700B599BF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = ../Trip.h; sourceTree = "<group>"; };
 		2A321AA0194C527700B599BF /* DbAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbAccessor.m; path = ../DbAccessor.m; sourceTree = "<group>"; };
 		2A321AA1194C527700B599BF /* Charge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Charge.m; path = ../Charge.m; sourceTree = "<group>"; };
+		2A321AA7194C60B900B599BF /* iTrip.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTrip.sqlite; sourceTree = "<group>"; };
 		2AEE2916194ADB2900146CDB /* TripListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListTableViewController.h; sourceTree = "<group>"; };
 		2AEE2917194ADB2900146CDB /* TripListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListTableViewController.m; sourceTree = "<group>"; };
 		2AEE2919194ADD7D00146CDB /* EmptyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTripViewController.h; sourceTree = "<group>"; };
@@ -117,7 +116,7 @@
 		2A000FB8194AD72900FB5289 = {
 			isa = PBXGroup;
 			children = (
-				2A321A6B194C425E00B599BF /* iTrip.sqlite */,
+				2A321AA7194C60B900B599BF /* iTrip.sqlite */,
 				2A000FCA194AD72900FB5289 /* iTrip */,
 				2A000FE9194AD72900FB5289 /* iTripTests */,
 				2A000FC3194AD72900FB5289 /* Frameworks */,
@@ -300,7 +299,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A321A6C194C425E00B599BF /* iTrip.sqlite in Resources */,
 				2A000FDD194AD72900FB5289 /* Images.xcassets in Resources */,
 				2A000FCF194AD72900FB5289 /* InfoPlist.strings in Resources */,
 				2A000FD8194AD72900FB5289 /* Main.storyboard in Resources */,
