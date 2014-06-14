@@ -7,6 +7,7 @@
 //
 
 #import "ChargeListTableViewController.h"
+#import "CustomIOS7AlertView.h"
 
 @interface ChargeListTableViewController ()
 
@@ -117,19 +118,15 @@
 */
 - (IBAction)addCharge:(id)sender
 {
-    UITextField * _fakeTextField=[[UITextField alloc] initWithFrame:CGRectMake(12, 3, 200, 30)];
-    _fakeTextField.backgroundColor=[UIColor clearColor];
-    _fakeTextField.userInteractionEnabled=NO;
+    CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
+    [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"取消", @"完成", nil]];
+    UIViewController *customViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"chargeCheck"];
+    UIView *customView = customViewController.view;
+    customView.frame = CGRectMake(0, 0, 180, 100);
     
-    UIAlertView *_myAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"\n\n\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil];
+    [alertView setContainerView:customView];
+    [alertView show];
     
-//    changePasswordView.frame=CGRectMake(12, 3, changePasswordView.frame.size.width, changePasswordView.frame.size.height);
-//    newPassword.text=@"";
-//    oldPassword.text=@"";
-//    confirmPassword.text=@"";
-//    [_myAlertView addSubview:_fakeTextField];
-//    [_myAlertView addSubview:changePasswordVie	w];
-//    [_myAlertView show];
 }
 
 @end

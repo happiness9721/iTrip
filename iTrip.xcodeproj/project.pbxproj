@@ -23,6 +23,9 @@
 		2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE2917194ADB2900146CDB /* TripListTableViewController.m */; };
 		2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */; };
 		2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */; };
+		D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3C28194C341600A930B7 /* CustomIOS7AlertView.m */; };
+		D8FD3C2B194C3B4600A930B7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8FD3C2A194C3B4600A930B7 /* MapKit.framework */; };
+		D8FD3C2E194C3BE500A930B7 /* SelectCoordinateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3C2D194C3BE500A930B7 /* SelectCoordinateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,11 @@
 		2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyTripViewController.m; sourceTree = "<group>"; };
 		2AEE291C194AF6A400146CDB /* ChargeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeListTableViewController.h; sourceTree = "<group>"; };
 		2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeListTableViewController.m; sourceTree = "<group>"; };
+		D8FD3C27194C341600A930B7 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
+		D8FD3C28194C341600A930B7 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
+		D8FD3C2A194C3B4600A930B7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D8FD3C2C194C3BE500A930B7 /* SelectCoordinateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCoordinateViewController.h; sourceTree = "<group>"; };
+		D8FD3C2D194C3BE500A930B7 /* SelectCoordinateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCoordinateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8FD3C2B194C3B4600A930B7 /* MapKit.framework in Frameworks */,
 				2A000FC7194AD72900FB5289 /* CoreGraphics.framework in Frameworks */,
 				2A000FC9194AD72900FB5289 /* UIKit.framework in Frameworks */,
 				2A000FC5194AD72900FB5289 /* Foundation.framework in Frameworks */,
@@ -107,6 +116,7 @@
 		2A000FC3194AD72900FB5289 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8FD3C2A194C3B4600A930B7 /* MapKit.framework */,
 				2A000FC4194AD72900FB5289 /* Foundation.framework */,
 				2A000FC6194AD72900FB5289 /* CoreGraphics.framework */,
 				2A000FC8194AD72900FB5289 /* UIKit.framework */,
@@ -168,12 +178,16 @@
 		2AEE2915194ADAC800146CDB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D8FD3C27194C341600A930B7 /* CustomIOS7AlertView.h */,
+				D8FD3C28194C341600A930B7 /* CustomIOS7AlertView.m */,
 				2AEE2916194ADB2900146CDB /* TripListTableViewController.h */,
 				2AEE2917194ADB2900146CDB /* TripListTableViewController.m */,
 				2AEE2919194ADD7D00146CDB /* EmptyTripViewController.h */,
 				2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */,
 				2AEE291C194AF6A400146CDB /* ChargeListTableViewController.h */,
 				2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */,
+				D8FD3C2C194C3BE500A930B7 /* SelectCoordinateViewController.h */,
+				D8FD3C2D194C3BE500A930B7 /* SelectCoordinateViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,8 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */,
 				2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */,
 				2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */,
+				D8FD3C2E194C3BE500A930B7 /* SelectCoordinateViewController.m in Sources */,
 				2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */,
 				2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */,
 				2A000FD1194AD72900FB5289 /* main.m in Sources */,
