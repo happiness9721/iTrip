@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Pms-ZG-3pU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WBi-u0-9nR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -44,7 +44,7 @@
                         <barButtonItem key="backBarButtonItem" title="上一步" id="1m5-XN-Nl7"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cIZ-vQ-bse">
                             <connections>
-                                <segue destination="EDp-bS-QIY" kind="push" id="E82-zf-r9h"/>
+                                <segue destination="EDp-bS-QIY" kind="push" identifier="tripListToAddTrip" id="E82-zf-r9h"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -316,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="350" y="2688"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Trip View Controller-->
         <scene sceneID="NlW-WK-ml0">
             <objects>
-                <viewController id="EDp-bS-QIY" sceneMemberID="viewController">
+                <viewController id="EDp-bS-QIY" customClass="AddTripViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oWC-fQ-7wY"/>
                         <viewControllerLayoutGuide type="bottom" id="2q2-RA-0Jg"/>
@@ -372,7 +372,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Hc0-61-pX3" kind="push" id="sCM-pT-Jwx"/>
+                                    <segue destination="Hc0-61-pX3" kind="push" identifier="addTripToSelectCoordinate" id="sCM-pT-Jwx"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a6Z-Ft-o1v">
@@ -413,6 +413,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="budget" destination="ONu-aq-Xdh" id="VwY-5i-xQe"/>
+                        <outlet property="date" destination="E8C-PT-rdd" id="r7Z-Ef-n8j"/>
+                        <outlet property="detail" destination="a6Z-Ft-o1v" id="fvK-AA-Z5D"/>
+                        <outlet property="location" destination="exH-uZ-eGA" id="b7i-bc-d36"/>
+                        <outlet property="name" destination="6Ec-pY-hSL" id="bWQ-HB-ZCo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0a-XX-xo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="faF-nF-cFV" userLabel="Exit" sceneMemberID="exit"/>
@@ -444,13 +451,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FzH-nh-I5T"/>
+                    <navigationItem key="navigationItem" id="FzH-nh-I5T">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="qcQ-ge-S7k">
+                            <connections>
+                                <segue destination="MU9-bP-Fcg" kind="unwind" unwindAction="unwindToTripList:" id="Mbl-4L-aan"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="EUo-F7-XkZ" id="pGz-u5-3V3"/>
                         <outlet property="selectPlaceText" destination="KL0-Mn-Net" id="HLT-21-5g9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcD-kK-6OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MU9-bP-Fcg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-223" y="-279"/>
         </scene>
@@ -497,9 +511,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LRU-H0-HVH"/>
+                    <navigationItem key="navigationItem" id="LRU-H0-HVH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aia-YI-kiJ">
+                            <connections>
+                                <segue destination="Iaq-hg-Lxq" kind="unwind" unwindAction="unwindToTripList:" id="kTV-Eo-BWu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-AF-h40" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Iaq-hg-Lxq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-223" y="469"/>
         </scene>

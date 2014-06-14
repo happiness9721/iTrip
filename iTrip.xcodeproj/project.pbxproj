@@ -20,11 +20,13 @@
 		2A000FE6194AD72900FB5289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC8194AD72900FB5289 /* UIKit.framework */; };
 		2A000FEE194AD72900FB5289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FEC194AD72900FB5289 /* InfoPlist.strings */; };
 		2A000FF0194AD72900FB5289 /* iTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FEF194AD72900FB5289 /* iTripTests.m */; };
-		2A321A5F194C306200B599BF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A5E194C306200B599BF /* Trip.m */; };
-		2A321A62194C306D00B599BF /* Charge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A61194C306D00B599BF /* Charge.m */; };
-		2A321A65194C307A00B599BF /* TripLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A64194C307A00B599BF /* TripLog.m */; };
-		2A321A68194C325B00B599BF /* DbAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A67194C325B00B599BF /* DbAccessor.m */; };
-		2A321A6A194C330400B599BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A321A69194C330400B599BF /* libsqlite3.dylib */; };
+		2A321A6C194C425E00B599BF /* iTrip.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2A321A6B194C425E00B599BF /* iTrip.sqlite */; };
+		2A321A6E194C43F800B599BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A321A6D194C43F800B599BF /* libsqlite3.dylib */; };
+		2A321A71194C461200B599BF /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A70194C461200B599BF /* AddTripViewController.m */; };
+		2A321AA2194C527700B599BF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A9A194C527700B599BF /* Trip.m */; };
+		2A321AA3194C527700B599BF /* TripLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A9B194C527700B599BF /* TripLog.m */; };
+		2A321AA4194C527700B599BF /* DbAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321AA0194C527700B599BF /* DbAccessor.m */; };
+		2A321AA5194C527700B599BF /* Charge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321AA1194C527700B599BF /* Charge.m */; };
 		2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE2917194ADB2900146CDB /* TripListTableViewController.m */; };
 		2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */; };
 		2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */; };
@@ -61,15 +63,18 @@
 		2A000FEB194AD72900FB5289 /* iTripTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTripTests-Info.plist"; sourceTree = "<group>"; };
 		2A000FED194AD72900FB5289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A000FEF194AD72900FB5289 /* iTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTripTests.m; sourceTree = "<group>"; };
-		2A321A5D194C306200B599BF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = SOURCE_ROOT; };
-		2A321A5E194C306200B599BF /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = SOURCE_ROOT; };
-		2A321A60194C306D00B599BF /* Charge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Charge.h; sourceTree = SOURCE_ROOT; };
-		2A321A61194C306D00B599BF /* Charge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Charge.m; sourceTree = SOURCE_ROOT; };
-		2A321A63194C307A00B599BF /* TripLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripLog.h; sourceTree = SOURCE_ROOT; };
-		2A321A64194C307A00B599BF /* TripLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripLog.m; sourceTree = SOURCE_ROOT; };
-		2A321A66194C325B00B599BF /* DbAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DbAccessor.h; sourceTree = SOURCE_ROOT; };
-		2A321A67194C325B00B599BF /* DbAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DbAccessor.m; sourceTree = SOURCE_ROOT; };
-		2A321A69194C330400B599BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		2A321A6B194C425E00B599BF /* iTrip.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTrip.sqlite; path = ../../../../iTrip.sqlite; sourceTree = "<group>"; };
+		2A321A6D194C43F800B599BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		2A321A6F194C461200B599BF /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
+		2A321A70194C461200B599BF /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
+		2A321A9A194C527700B599BF /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = ../Trip.m; sourceTree = "<group>"; };
+		2A321A9B194C527700B599BF /* TripLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripLog.m; path = ../TripLog.m; sourceTree = "<group>"; };
+		2A321A9C194C527700B599BF /* TripLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripLog.h; path = ../TripLog.h; sourceTree = "<group>"; };
+		2A321A9D194C527700B599BF /* Charge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Charge.h; path = ../Charge.h; sourceTree = "<group>"; };
+		2A321A9E194C527700B599BF /* DbAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbAccessor.h; path = ../DbAccessor.h; sourceTree = "<group>"; };
+		2A321A9F194C527700B599BF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = ../Trip.h; sourceTree = "<group>"; };
+		2A321AA0194C527700B599BF /* DbAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbAccessor.m; path = ../DbAccessor.m; sourceTree = "<group>"; };
+		2A321AA1194C527700B599BF /* Charge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Charge.m; path = ../Charge.m; sourceTree = "<group>"; };
 		2AEE2916194ADB2900146CDB /* TripListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListTableViewController.h; sourceTree = "<group>"; };
 		2AEE2917194ADB2900146CDB /* TripListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListTableViewController.m; sourceTree = "<group>"; };
 		2AEE2919194ADD7D00146CDB /* EmptyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTripViewController.h; sourceTree = "<group>"; };
@@ -88,7 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A321A6A194C330400B599BF /* libsqlite3.dylib in Frameworks */,
+				2A321A6E194C43F800B599BF /* libsqlite3.dylib in Frameworks */,
+				D8FD3C2B194C3B4600A930B7 /* MapKit.framework in Frameworks */,
 				2A000FC7194AD72900FB5289 /* CoreGraphics.framework in Frameworks */,
 				2A000FC9194AD72900FB5289 /* UIKit.framework in Frameworks */,
 				2A000FC5194AD72900FB5289 /* Foundation.framework in Frameworks */,
@@ -111,6 +117,7 @@
 		2A000FB8194AD72900FB5289 = {
 			isa = PBXGroup;
 			children = (
+				2A321A6B194C425E00B599BF /* iTrip.sqlite */,
 				2A000FCA194AD72900FB5289 /* iTrip */,
 				2A000FE9194AD72900FB5289 /* iTripTests */,
 				2A000FC3194AD72900FB5289 /* Frameworks */,
@@ -130,7 +137,8 @@
 		2A000FC3194AD72900FB5289 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2A321A69194C330400B599BF /* libsqlite3.dylib */,
+				2A321A6D194C43F800B599BF /* libsqlite3.dylib */,
+				D8FD3C2A194C3B4600A930B7 /* MapKit.framework */,
 				2A000FC4194AD72900FB5289 /* Foundation.framework */,
 				2A000FC6194AD72900FB5289 /* CoreGraphics.framework */,
 				2A000FC8194AD72900FB5289 /* UIKit.framework */,
@@ -142,8 +150,8 @@
 		2A000FCA194AD72900FB5289 /* iTrip */ = {
 			isa = PBXGroup;
 			children = (
+				2A321AA6194C527E00B599BF /* Model */,
 				2AEE2915194ADAC800146CDB /* Controller */,
-				2AEE2914194ADAC100146CDB /* Model */,
 				2A000FD3194AD72900FB5289 /* AppDelegate.h */,
 				2A000FD4194AD72900FB5289 /* AppDelegate.m */,
 				2A000FD6194AD72900FB5289 /* Main.storyboard */,
@@ -182,19 +190,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2AEE2914194ADAC100146CDB /* Model */ = {
+		2A321AA6194C527E00B599BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2A321A5D194C306200B599BF /* Trip.h */,
-				2A321A5E194C306200B599BF /* Trip.m */,
-				2A321A60194C306D00B599BF /* Charge.h */,
-				2A321A61194C306D00B599BF /* Charge.m */,
-				2A321A63194C307A00B599BF /* TripLog.h */,
-				2A321A64194C307A00B599BF /* TripLog.m */,
-				2A321A66194C325B00B599BF /* DbAccessor.h */,
-				2A321A67194C325B00B599BF /* DbAccessor.m */,
+				2A321A9A194C527700B599BF /* Trip.m */,
+				2A321A9B194C527700B599BF /* TripLog.m */,
+				2A321A9C194C527700B599BF /* TripLog.h */,
+				2A321A9D194C527700B599BF /* Charge.h */,
+				2A321A9E194C527700B599BF /* DbAccessor.h */,
+				2A321A9F194C527700B599BF /* Trip.h */,
+				2A321AA0194C527700B599BF /* DbAccessor.m */,
+				2A321AA1194C527700B599BF /* Charge.m */,
 			);
-			path = Model;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		2AEE2915194ADAC800146CDB /* Controller */ = {
@@ -210,6 +218,8 @@
 				2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */,
 				D8FD3C2C194C3BE500A930B7 /* SelectCoordinateViewController.h */,
 				D8FD3C2D194C3BE500A930B7 /* SelectCoordinateViewController.m */,
+				2A321A6F194C461200B599BF /* AddTripViewController.h */,
+				2A321A70194C461200B599BF /* AddTripViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -290,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A321A6C194C425E00B599BF /* iTrip.sqlite in Resources */,
 				2A000FDD194AD72900FB5289 /* Images.xcassets in Resources */,
 				2A000FCF194AD72900FB5289 /* InfoPlist.strings in Resources */,
 				2A000FD8194AD72900FB5289 /* Main.storyboard in Resources */,
@@ -312,15 +323,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */,
+				2A321AA5194C527700B599BF /* Charge.m in Sources */,
 				2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */,
 				2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */,
-				2A321A68194C325B00B599BF /* DbAccessor.m in Sources */,
-				2A321A5F194C306200B599BF /* Trip.m in Sources */,
-				2A321A62194C306D00B599BF /* Charge.m in Sources */,
+				2A321A71194C461200B599BF /* AddTripViewController.m in Sources */,
+				D8FD3C2E194C3BE500A930B7 /* SelectCoordinateViewController.m in Sources */,
+				2A321AA4194C527700B599BF /* DbAccessor.m in Sources */,
 				2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */,
-				2A321A65194C307A00B599BF /* TripLog.m in Sources */,
 				2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */,
+				2A321AA3194C527700B599BF /* TripLog.m in Sources */,
 				2A000FD1194AD72900FB5289 /* main.m in Sources */,
+				2A321AA2194C527700B599BF /* Trip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

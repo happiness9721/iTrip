@@ -12,6 +12,7 @@
 @property int tid;
 @property NSString * name;
 @property NSString * detail;
+@property NSDate * date;
 @property int budget;
 @property NSString * location;
 @property double latitude;

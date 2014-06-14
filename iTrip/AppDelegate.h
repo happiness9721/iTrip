@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <sqlite3.h>
+#import "Trip.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    sqlite3 * db;
+}
+
+-(sqlite3*) getDB;
+-(void) addTrip :(Trip*) trip;
+
+
 
 @property (strong, nonatomic) UIWindow *window;
 
