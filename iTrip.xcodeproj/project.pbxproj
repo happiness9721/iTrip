@@ -14,13 +14,15 @@
 		2A000FD1194AD72900FB5289 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FD0194AD72900FB5289 /* main.m */; };
 		2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FD4194AD72900FB5289 /* AppDelegate.m */; };
 		2A000FD8194AD72900FB5289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FD6194AD72900FB5289 /* Main.storyboard */; };
-		2A000FDB194AD72900FB5289 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FDA194AD72900FB5289 /* ViewController.m */; };
 		2A000FDD194AD72900FB5289 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FDC194AD72900FB5289 /* Images.xcassets */; };
 		2A000FE4194AD72900FB5289 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FE3194AD72900FB5289 /* XCTest.framework */; };
 		2A000FE5194AD72900FB5289 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC4194AD72900FB5289 /* Foundation.framework */; };
 		2A000FE6194AD72900FB5289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC8194AD72900FB5289 /* UIKit.framework */; };
 		2A000FEE194AD72900FB5289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FEC194AD72900FB5289 /* InfoPlist.strings */; };
 		2A000FF0194AD72900FB5289 /* iTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FEF194AD72900FB5289 /* iTripTests.m */; };
+		2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE2917194ADB2900146CDB /* TripListTableViewController.m */; };
+		2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */; };
+		2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +47,18 @@
 		2A000FD3194AD72900FB5289 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A000FD4194AD72900FB5289 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2A000FD7194AD72900FB5289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2A000FD9194AD72900FB5289 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2A000FDA194AD72900FB5289 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2A000FDC194AD72900FB5289 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2A000FE2194AD72900FB5289 /* iTripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A000FE3194AD72900FB5289 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2A000FEB194AD72900FB5289 /* iTripTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTripTests-Info.plist"; sourceTree = "<group>"; };
 		2A000FED194AD72900FB5289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A000FEF194AD72900FB5289 /* iTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTripTests.m; sourceTree = "<group>"; };
+		2AEE2916194ADB2900146CDB /* TripListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListTableViewController.h; sourceTree = "<group>"; };
+		2AEE2917194ADB2900146CDB /* TripListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListTableViewController.m; sourceTree = "<group>"; };
+		2AEE2919194ADD7D00146CDB /* EmptyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTripViewController.h; sourceTree = "<group>"; };
+		2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyTripViewController.m; sourceTree = "<group>"; };
+		2AEE291C194AF6A400146CDB /* ChargeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeListTableViewController.h; sourceTree = "<group>"; };
+		2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +118,11 @@
 		2A000FCA194AD72900FB5289 /* iTrip */ = {
 			isa = PBXGroup;
 			children = (
+				2AEE2915194ADAC800146CDB /* Controller */,
+				2AEE2914194ADAC100146CDB /* Model */,
 				2A000FD3194AD72900FB5289 /* AppDelegate.h */,
 				2A000FD4194AD72900FB5289 /* AppDelegate.m */,
 				2A000FD6194AD72900FB5289 /* Main.storyboard */,
-				2A000FD9194AD72900FB5289 /* ViewController.h */,
-				2A000FDA194AD72900FB5289 /* ViewController.m */,
 				2A000FDC194AD72900FB5289 /* Images.xcassets */,
 				2A000FCB194AD72900FB5289 /* Supporting Files */,
 			);
@@ -150,6 +156,26 @@
 				2A000FEC194AD72900FB5289 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AEE2914194ADAC100146CDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2AEE2915194ADAC800146CDB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2AEE2916194ADB2900146CDB /* TripListTableViewController.h */,
+				2AEE2917194ADB2900146CDB /* TripListTableViewController.m */,
+				2AEE2919194ADD7D00146CDB /* EmptyTripViewController.h */,
+				2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */,
+				2AEE291C194AF6A400146CDB /* ChargeListTableViewController.h */,
+				2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A000FDB194AD72900FB5289 /* ViewController.m in Sources */,
 				2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */,
+				2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */,
+				2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */,
+				2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */,
 				2A000FD1194AD72900FB5289 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +484,7 @@
 				2A000FF5194AD72900FB5289 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A000FF6194AD72900FB5289 /* Build configuration list for PBXNativeTarget "iTripTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +493,7 @@
 				2A000FF8194AD72900FB5289 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

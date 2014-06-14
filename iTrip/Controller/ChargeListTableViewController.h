@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ChargeListTableViewController.h
 //  iTrip
 //
 //  Created by 楊凱霖 on 6/13/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ChargeListTableViewController : UITableViewController
 
 @end
