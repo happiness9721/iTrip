@@ -9,8 +9,7 @@
 #import "SelectCoordinateViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface SelectCoordinateViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *selectPlaceText;
+@interface SelectCoordinateViewController () <UISearchBarDelegate, NSURLConnectionDataDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
@@ -32,6 +31,7 @@
     [super viewDidLoad];
     // 建立一個region，待會要設定給MapView
     MKCoordinateRegion kaos_digital;
+    
     
     // 設定經緯度
     kaos_digital.center.latitude = 25.01141;
