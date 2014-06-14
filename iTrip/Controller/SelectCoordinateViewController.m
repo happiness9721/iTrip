@@ -9,8 +9,8 @@
 #import "SelectCoordinateViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface SelectCoordinateViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *selectPlaceText;
+@interface SelectCoordinateViewController () <UISearchBarDelegate>
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
@@ -32,6 +32,7 @@
     // 建立一個region，待會要設定給MapView
     MKCoordinateRegion kaos_digital;
     
+    
     // 設定經緯度
     kaos_digital.center.latitude = 25.01141;
     kaos_digital.center.longitude = 121.42554;
@@ -49,6 +50,28 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:self.searchBar.text completionHandler:^(NSArray *placemarks, NSError *error) {
+        //Error checking
+        
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        MKCoordinateRegion region;
+        region.center = [(CLCircularRegion *)placemark.region center];
+        MKCoordinateSpan span;
+        double radius = [(CLCircularRegion*)placemark.region radius] / 1000; // convert to km
+        
+        NSLog(@"[searchBarSearchButtonClicked] Radius is %f", radius);
+        span.latitudeDelta = radius / 112.0;
+        
+        region.span = span;
+        
+        [self.mapView setRegion:region animated:YES];
+    }];
 }
 
 /*
