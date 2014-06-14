@@ -17,8 +17,10 @@
 
 -(sqlite3*) getDB;
 -(void) addTrip :(Trip*) trip;
-
-
+-(Trip*) getTrip :(int) tid;
+-(NSMutableArray*) getTrips;
+-(int) getTripCount;
+-(void) removeAllTrips;
 
 @property (strong, nonatomic) UIWindow *window;
 

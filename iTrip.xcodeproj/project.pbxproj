@@ -193,14 +193,14 @@
 		2A321AA6194C527E00B599BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2A321A9A194C527700B599BF /* Trip.m */,
-				2A321A9B194C527700B599BF /* TripLog.m */,
-				2A321A9C194C527700B599BF /* TripLog.h */,
 				2A321A9D194C527700B599BF /* Charge.h */,
-				2A321A9E194C527700B599BF /* DbAccessor.h */,
-				2A321A9F194C527700B599BF /* Trip.h */,
-				2A321AA0194C527700B599BF /* DbAccessor.m */,
 				2A321AA1194C527700B599BF /* Charge.m */,
+				2A321A9E194C527700B599BF /* DbAccessor.h */,
+				2A321AA0194C527700B599BF /* DbAccessor.m */,
+				2A321A9F194C527700B599BF /* Trip.h */,
+				2A321A9A194C527700B599BF /* Trip.m */,
+				2A321A9C194C527700B599BF /* TripLog.h */,
+				2A321A9B194C527700B599BF /* TripLog.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
