@@ -449,7 +449,6 @@
                     <navigationItem key="navigationItem" id="FzH-nh-I5T"/>
                     <connections>
                         <outlet property="mapView" destination="EUo-F7-XkZ" id="pGz-u5-3V3"/>
-                        <outlet property="searchBar" destination="Ik0-4D-v5r" id="9S9-91-xo0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcD-kK-6OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
