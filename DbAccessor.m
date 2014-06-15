@@ -112,7 +112,7 @@ NSString * const TYPE_LOCATION = @"position";
         }
         sqlite3_finalize(statement);
         sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(db);
-        trip.tid = lastRowId;
+        trip.tid = (int)lastRowId;
     }
     return trip;
 }
