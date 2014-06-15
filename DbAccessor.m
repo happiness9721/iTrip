@@ -190,7 +190,7 @@ NSString * const TYPE_LOCATION = @"position";
         //Loop through all the returned rows (should be just one)
         while( sqlite3_step(statement) == SQLITE_ROW )
         {
-            NSInteger count = sqlite3_column_int(statement, 0);
+            int count = sqlite3_column_int(statement, 0);
             sqlite3_finalize(statement);
             return count;
         }
@@ -302,7 +302,7 @@ NSString * const TYPE_LOCATION = @"position";
     {
         while( sqlite3_step(statement) == SQLITE_ROW )
         {
-            NSInteger count = sqlite3_column_int(statement, 0);
+            int count = sqlite3_column_int(statement, 0);
             sqlite3_finalize(statement);
             return count;
         }
@@ -423,7 +423,7 @@ NSString * const TYPE_LOCATION = @"position";
         //Loop through all the returned rows (should be just one)
         while( sqlite3_step(statement) == SQLITE_ROW )
         {
-            NSInteger count = sqlite3_column_int(statement, 0);
+            int count = sqlite3_column_int(statement, 0);
             NSLog(@"Rowcount is %d",count);
             sqlite3_finalize(statement);
             return count;
