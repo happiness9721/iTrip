@@ -19,16 +19,15 @@
 -(id) init;
 -(void) resetDb;
 
--(void) addTrip :(Trip*) trip;
+-(Trip*) addTrip :(Trip*) trip;
 -(Trip*) getTrip :(int) tid;
 -(NSMutableArray*) getTrips;
 -(int) getTripCount;
 -(void) removeAllTrips;
 
 -(void) addCharge : (Charge*) charge;
--(Trip*) getCharge :(int) tid;
--(NSMutableArray*) getCharges;
--(int) getChargeCount;
+-(NSMutableArray*) getCharges:(int) tid;
+-(int) getChargeCount :(int) tid;
 -(void) removeAllCharges;
 
 

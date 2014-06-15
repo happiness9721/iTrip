@@ -17,6 +17,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     db = [[DbAccessor alloc] init];
+    [db resetDb];
+    db = [[DbAccessor alloc] init];
+    [db removeAllTrips];
+    [db removeAllCharges];
     
     Trip * trip = [[Trip alloc] init];
     trip.name = @"trip name";
@@ -28,10 +32,20 @@
     trip.longitude = 123.5555;
     
     
-    [db addTrip:trip];
+    trip = [db addTrip:trip];
     [db getTrip:1];
     [db getTrips];
     [db getTripCount];
+    
+    Charge * charge = [[Charge alloc]init];
+    charge.tid = trip.tid;
+    charge.name = @"charge name";
+    charge.pay = 500;
+    charge.time = [NSDate date];
+    [db addCharge:charge];
+    [db addCharge:charge];
+    [db getCharges:charge.tid];
+    [db getChargeCount: charge.tid];
     
     return YES;
 }
