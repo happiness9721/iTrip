@@ -8,16 +8,13 @@
 
 #import "DbAccessor.h"
 
-@interface DbAccessor ()
-
-@end
-
 @implementation DbAccessor
-NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
-NSString * dbFileName = @"iTrip.sqlite";
-NSString * TYPE_TEXT = @"text";
-NSString * TYPE_IMAGE = @"image";
-NSString * TYPE_LOCATION = @"position";
+NSString * const dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
+NSString * const dbFileName = @"iTrip.sqlite";
+NSString * const TYPE_TEXT = @"text";
+NSString * const TYPE_IMAGE = @"image";
+NSString * const TYPE_LOCATION = @"position";
+
 - (id) init
 {
     self = [super init];
@@ -38,7 +35,7 @@ NSString * TYPE_LOCATION = @"position";
                 
                 const char *createChargeSql="create table if not exists Charge (tid integer, name text, pay integer, time date)";
                 
-                const char *createTripLogSql="create table if not exists TripLog (tid integer, type text, text text, iid integer, location text, latitude real, longitude real, time date, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
+                const char *createTripLogSql="create table if not exists TripLog (tid integer, type text, text text, iid integer, location text, latitude real, longitude real, time date)";//, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
                 
                 const char *createTripLogPicture="create table if not exists TripLogImage (iid integer primary key autoincrement, image blob)";
                 
@@ -104,9 +101,9 @@ NSString * TYPE_LOCATION = @"position";
         [dateFormat setDateFormat: dbDateFormatString];
         NSString *date=[dateFormat stringFromDate:trip.date];
         
-        NSString * sqlStr = [NSString stringWithFormat:@"insert into Trip (name, detail, date, budget, location, latitude, longitude) Values ('%@', '%@', '%@', '%@', '%@', '%@', '%@')", trip.name, trip.detail, date, budget, trip.location, latitude, longitude];
-        NSLog(@"sqlstr = %@", sqlStr);
         sqlite3_stmt * statement;
+        NSString * sqlStr = [NSString stringWithFormat:@"insert into Trip (name, detail, date, budget, location, latitude, longitude) Values ('%@', '%@', '%@', '%@', '%@', '%@', '%@')", trip.name, trip.detail, date, budget, trip.location, latitude, longitude];
+        NSLog(@"addtrip sql = %@", sqlStr);
         sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE){
             NSLog(@"成功加入一筆Trip資料");
@@ -150,19 +147,9 @@ NSString * TYPE_LOCATION = @"position";
     double latitude = sqlite3_column_double(statement, 6);
     double longitude = sqlite3_column_double(statement, 7);
     
-    NSLog(@"tid=%d", tid);
-    NSLog(@"name=%s", name);
-    NSLog(@"detail=%s", detail);
-    NSLog(@"date=%s", date);
-    NSLog(@"budget=%d", budget);
-    NSLog(@"location=%s", location);
-    NSLog(@"latitude=%lf", latitude);
-    NSLog(@"longitude=%lf", longitude);
-    
     // Convert string to date object
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:dbDateFormatString];
-    
     
     trip.tid = tid;
     trip.name = [NSString stringWithFormat:@"%s", name];
@@ -177,7 +164,6 @@ NSString * TYPE_LOCATION = @"position";
 
 -(NSMutableArray*) getTrips
 {
-    NSLog(@"查詢所有Trip");
     NSMutableArray * trips = [[NSMutableArray alloc] init];
     
     NSString * sqlStr = @"select * from Trip";
@@ -196,14 +182,12 @@ NSString * TYPE_LOCATION = @"position";
 {
     const char* sqlStatement = "SELECT COUNT(*) FROM Trip";
     sqlite3_stmt *statement;
-    
     if( sqlite3_prepare_v2(db, sqlStatement, -1, &statement, NULL) == SQLITE_OK )
     {
         //Loop through all the returned rows (should be just one)
         while( sqlite3_step(statement) == SQLITE_ROW )
         {
             NSInteger count = sqlite3_column_int(statement, 0);
-            NSLog(@"Rowcount is %d",count);
             sqlite3_finalize(statement);
             return count;
         }
@@ -223,13 +207,9 @@ NSString * TYPE_LOCATION = @"position";
     const char *sqlStatement = "delete from Trip";
     sqlite3_stmt *compiledStatement;
     if(sqlite3_prepare_v2(db, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-        // Loop through the results and add them to the feeds array
         while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-            // Read the data from the result row
             NSLog(@"result is here");
         }
-        
-        // Release the compiled statement from memory
         sqlite3_finalize(compiledStatement);
     }
 }
@@ -242,7 +222,6 @@ NSString * TYPE_LOCATION = @"position";
         [dateFormat setDateFormat: dbDateFormatString];
         NSString *time=[dateFormat stringFromDate:charge.time];
         NSString * sqlStr = [NSString stringWithFormat:@"insert into Charge (tid, name, pay, time) Values ('%d', '%@', '%d', '%@')", charge.tid, charge.name, charge.pay, time];
-        NSLog(@"sqlstr = %@", sqlStr);
         sqlite3_stmt * statement;
         sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE){
@@ -256,7 +235,6 @@ NSString * TYPE_LOCATION = @"position";
 
 -(NSMutableArray*) getCharges:(int) tid
 {
-    NSLog(@"查詢Charges");
     NSMutableArray * charges = [[NSMutableArray alloc] init];
     NSString * sqlStr = [NSString stringWithFormat:@"select * from Charge where tid = %d", tid];
     
@@ -281,14 +259,6 @@ NSString * TYPE_LOCATION = @"position";
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:dbDateFormatString];
     charge.time = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
-
-    
-    
-    NSLog(@"tid=%d", tid);
-    NSLog(@"name=%s", name);
-    NSLog(@"pay=%d", pay);
-    NSLog(@"date=%s", date);
-    
     charge.tid = tid;
     charge.name = [NSString stringWithFormat:@"%s", name];
     charge.pay = pay;
@@ -299,17 +269,14 @@ NSString * TYPE_LOCATION = @"position";
 -(int) getChargeCount :(int) tid
 {
     NSString * sqlStr = [NSString stringWithFormat:@"select COUNT(*) from Charge where tid = %d", tid];
-    
-    const char* sqlStatement = [sqlStr UTF8String];//"SELECT COUNT(*) FROM Charge where tid = %d";
+    const char* sqlStatement = [sqlStr UTF8String];
     sqlite3_stmt *statement;
     
     if( sqlite3_prepare_v2(db, sqlStatement, -1, &statement, NULL) == SQLITE_OK )
     {
-        //Loop through all the returned rows (should be just one)
         while( sqlite3_step(statement) == SQLITE_ROW )
         {
             NSInteger count = sqlite3_column_int(statement, 0);
-            NSLog(@"Rowcount is %d",count);
             sqlite3_finalize(statement);
             return count;
         }
@@ -339,6 +306,7 @@ NSString * TYPE_LOCATION = @"position";
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat: dbDateFormatString];
         NSString *time=[dateFormat stringFromDate:tripLog.time];
+        
         NSString * sqlStr;
         if(tripLog.type==TYPE_IMAGE){
             int iid = [self addImage: tripLog.image];
@@ -348,13 +316,15 @@ NSString * TYPE_LOCATION = @"position";
         }else if(tripLog.type==TYPE_LOCATION){
             sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, location, latitude, longitude, time) Values ('%d', '%@', '%@', '%lf', '%lf', '%@')", tripLog.tid, tripLog.type, tripLog.location, tripLog.latitude, tripLog.longitude, time];
         }
-        NSLog(@"sqlstr = %@", sqlStr);
+        NSLog(@"addTripLog sqlstr = %@", sqlStr);
         sqlite3_stmt * statement;
         sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE){
             NSLog(@"成功加入一筆TripLog資料");
         }else{
             NSLog(@"加入TripLog失敗");
+            NSLog( @"add trip log err = %s", sqlite3_errmsg(db) );
+            
         }
         sqlite3_finalize(statement);
     }

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+
 @implementation AppDelegate
 
 -(void) removeAllTrips{
@@ -33,6 +34,8 @@
     
     
     trip = [db addTrip:trip];
+    
+    [trip printTrip];
     [db getTrip:1];
     [db getTrips];
     [db getTripCount];
@@ -42,10 +45,23 @@
     charge.name = @"charge name";
     charge.pay = 500;
     charge.time = [NSDate date];
+    [charge printCharge];
     [db addCharge:charge];
     [db addCharge:charge];
     [db getCharges:charge.tid];
     [db getChargeCount: charge.tid];
+    
+    TripLog* tripLog = [[TripLog alloc]init];
+    tripLog.tid = trip.tid;
+    tripLog.type = @"text";
+    tripLog.text = @"text message";
+    tripLog.time = [NSDate date];
+    
+    [tripLog printTripLog];
+    [db addTripLog:tripLog];
+    [db addTripLog:tripLog];
+    [db getTripLogs:trip.tid];
+    [db getTripLogCount:trip.tid];
     
     return YES;
 }

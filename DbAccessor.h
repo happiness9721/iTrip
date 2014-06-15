@@ -17,6 +17,12 @@
     sqlite3 * db;
 }
 
+FOUNDATION_EXPORT NSString * const dbDateFormatString;
+FOUNDATION_EXPORT NSString * const dbFileName;
+FOUNDATION_EXPORT NSString * const TYPE_TEXT;
+FOUNDATION_EXPORT NSString * const TYPE_IMAGE;
+FOUNDATION_EXPORT NSString * const TYPE_LOCATION;
+
 -(id) init;
 -(void) resetDb;
 
