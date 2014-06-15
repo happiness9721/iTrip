@@ -17,12 +17,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mp-AD-z67">
-                                <rect key="frame" x="0.0" y="137" width="320" height="431"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">沒有任何計劃
-
-
+                                <string key="text">     沒有任何計劃   
 馬上點擊右上方
 ＋按鈕
 新增行程！</string>
@@ -32,15 +30,14 @@
                             <containerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19w-7s-dPV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="THV-oO-hZo" kind="embed" id="C0a-KP-zN4"/>
+                                    <segue destination="THV-oO-hZo" kind="embed" id="itb-2T-vqz"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="qyz-bt-I5M">
                         <barButtonItem key="backBarButtonItem" title="上一步" id="1m5-XN-Nl7"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cIZ-vQ-bse">
@@ -320,13 +317,13 @@
         <!--Add Trip View Controller-->
         <scene sceneID="NlW-WK-ml0">
             <objects>
-                <viewController id="EDp-bS-QIY" customClass="AddTripViewController" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="EDp-bS-QIY" customClass="AddTripViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oWC-fQ-7wY"/>
                         <viewControllerLayoutGuide type="bottom" id="2q2-RA-0Jg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uMX-sb-JIZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名稱：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpG-D5-sMe">
@@ -407,10 +404,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="U9W-sj-xcO">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="rCe-JX-ovx">
                             <connections>
-                                <segue destination="faF-nF-cFV" kind="unwind" unwindAction="unwindToTripList:" id="gvQ-yw-Lva"/>
+                                <segue destination="faF-nF-cFV" kind="unwind" identifier="unwindToTripList" unwindAction="unwindToTripList:" id="gvQ-yw-Lva"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -534,12 +532,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="j7C-eG-rhz" kind="relationship" relationship="rootViewController" id="7co-cJ-Sd7"/>
+                        <segue destination="j7C-eG-rhz" kind="relationship" relationship="rootViewController" id="0kR-db-bwE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3a-6S-dgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1568" y="945"/>
+            <point key="canvasLocation" x="-2118" y="29"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="n7m-1p-o6v">
