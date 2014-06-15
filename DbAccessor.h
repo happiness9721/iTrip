@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 #import "Trip.h"
+#import "Charge.h"
 
 @interface DbAccessor : NSObject
 {
@@ -16,11 +17,20 @@
 }
 
 -(id) init;
--(void) addTrip :(Trip*) trip;
+-(void) resetDb;
+
+-(Trip*) addTrip :(Trip*) trip;
 -(Trip*) getTrip :(int) tid;
 -(NSMutableArray*) getTrips;
 -(int) getTripCount;
 -(void) removeAllTrips;
+
+-(void) addCharge : (Charge*) charge;
+-(NSMutableArray*) getCharges:(int) tid;
+-(int) getChargeCount :(int) tid;
+-(void) removeAllCharges;
+
+
 
 -(void)close;
 

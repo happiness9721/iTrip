@@ -14,6 +14,7 @@
 
 @implementation DbAccessor
 NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
+NSString * dbFileName = @"iTrip.sqlite";
 
 - (id) init
 {
@@ -23,13 +24,9 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
         NSString *docsDir = [dirPaths objectAtIndex:0];
         
         // Build the path to the database file
-        NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: @"iTrip.sqlite"]];
+        NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: dbFileName]];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        // 如果舊的檔案已經被建立，請執行這一行將就檔案刪除
-        // [filemgr removeItemAtPath:databasePath error:nil];
-        
         
         if ([fileManager fileExistsAtPath: databasePath ] == NO) {
             const char *dbpath = [databasePath UTF8String];
@@ -37,7 +34,7 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
             if (sqlite3_open(dbpath, &db) == SQLITE_OK) {
                 const char *createTripSql="create table if not exists Trip (tid integer primary key autoincrement, name text, detail text, date date,budget integer, location text, latitude real, longitude real)";
                 
-                const char *createChargeSql="create table if not exists Charge (tid integer, name text, pay integer)";
+                const char *createChargeSql="create table if not exists Charge (tid integer, name text, pay integer, time date)";
                 
                 const char *createTripLogSql="create table if not exists TripLog (tid integer, text text, pid integer, location text, latitude real, longitude real, date date, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
                 
@@ -61,9 +58,23 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
                 NSLog(@"資料庫連線成功");
             }
         }
-
     }
     return self;
+}
+
+-(void) resetDb
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    
+    // Build the path to the database file
+    NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: dbFileName]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:databasePath error:nil];
+    if(db!=NULL){
+        [self close];
+    }
+    db = NULL;
 }
 
 - (BOOL) tableCreate :(sqlite3*) database andSqlStatement:(const char *) sql
@@ -81,7 +92,7 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
     return YES;
 }
 
-- (void)addTrip: (Trip*) trip
+- (Trip*)addTrip: (Trip*) trip
 {
     if(db!=nil){
         NSString * budget = [NSString stringWithFormat:@"%d",trip.budget];
@@ -101,12 +112,14 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
             NSLog(@"加入Trip失敗");
         }
         sqlite3_finalize(statement);
+        sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(db);
+        trip.tid = lastRowId;
     }
+    return trip;
 }
 
 
 -(Trip*) getTrip :(int) tid{
-    
     if(db!=nil){
         NSString * sqlStr = [NSString stringWithFormat:@"select * from Trip where tid = %d", tid];
         
@@ -134,9 +147,6 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
     char *location = (char*)sqlite3_column_text(statement, 5);
     double latitude = sqlite3_column_double(statement, 6);
     double longitude = sqlite3_column_double(statement, 7);
-    trip.tid = tid;
-    trip.name = [NSString stringWithFormat:@"%s", name];
-    trip.detail = [NSString stringWithFormat:@"%s", detail];
     
     NSLog(@"tid=%d", tid);
     NSLog(@"name=%s", name);
@@ -150,8 +160,12 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
     // Convert string to date object
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:dbDateFormatString];
-    trip.date = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
     
+    
+    trip.tid = tid;
+    trip.name = [NSString stringWithFormat:@"%s", name];
+    trip.detail = [NSString stringWithFormat:@"%s", detail];
+    trip.date = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
     trip.budget = budget;
     trip.location =[NSString stringWithFormat:@"%s", location];
     trip.latitude = latitude;
@@ -204,8 +218,7 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
 }
 
 -(void) removeAllTrips{
-    NSString *query = @"delete from Trip";
-    const char *sqlStatement = [query UTF8String];
+    const char *sqlStatement = "delete from Trip";
     sqlite3_stmt *compiledStatement;
     if(sqlite3_prepare_v2(db, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
         // Loop through the results and add them to the feeds array
@@ -218,6 +231,115 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
         sqlite3_finalize(compiledStatement);
     }
 }
+
+
+-(void) addCharge : (Charge*) charge
+{
+    if(db!=nil){
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat: dbDateFormatString];
+        NSString *time=[dateFormat stringFromDate:charge.time];
+        NSString * sqlStr = [NSString stringWithFormat:@"insert into Charge (tid, name, pay, time) Values ('%d', '%@', '%d', '%@')", charge.tid, charge.name, charge.pay, time];
+        NSLog(@"sqlstr = %@", sqlStr);
+        sqlite3_stmt * statement;
+        sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE){
+            NSLog(@"成功加入一筆Charge資料");
+        }else{
+            NSLog(@"加入Charge失敗");
+        }
+        sqlite3_finalize(statement);
+    }
+}
+
+-(NSMutableArray*) getCharges:(int) tid
+{
+    NSLog(@"查詢Charges");
+    NSMutableArray * charges = [[NSMutableArray alloc] init];
+    NSString * sqlStr = [NSString stringWithFormat:@"select * from Charge where tid = %d", tid];
+    
+    sqlite3_stmt * statement;
+    sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+    while(sqlite3_step(statement)==SQLITE_ROW){
+        Charge* charge = [self statementToCharge:statement];
+        [charges addObject:charge];
+    }
+    return charges;
+}
+
+
+-(Charge*) statementToCharge: (sqlite3_stmt*) statement
+{
+    Charge * charge = [[Charge alloc] init];
+    int tid = sqlite3_column_int(statement, 0);
+    char *name = (char*)sqlite3_column_text(statement, 1);
+    int pay = sqlite3_column_int(statement, 2);
+    char *date = (char*)sqlite3_column_text(statement, 3);
+    
+    // Convert string to date object
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:dbDateFormatString];
+    charge.time = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
+
+    
+    
+    NSLog(@"tid=%d", tid);
+    NSLog(@"name=%s", name);
+    NSLog(@"pay=%d", pay);
+    NSLog(@"date=%s", date);
+    
+    charge.tid = tid;
+    charge.name = [NSString stringWithFormat:@"%s", name];
+    charge.pay = pay;
+    return charge;
+}
+
+
+-(int) getChargeCount :(int) tid
+{
+    NSString * sqlStr = [NSString stringWithFormat:@"select COUNT(*) from Charge where tid = %d", tid];
+    
+    const char* sqlStatement = [sqlStr UTF8String];//"SELECT COUNT(*) FROM Charge where tid = %d";
+    sqlite3_stmt *statement;
+    
+    if( sqlite3_prepare_v2(db, sqlStatement, -1, &statement, NULL) == SQLITE_OK )
+    {
+        //Loop through all the returned rows (should be just one)
+        while( sqlite3_step(statement) == SQLITE_ROW )
+        {
+            NSInteger count = sqlite3_column_int(statement, 0);
+            NSLog(@"Rowcount is %d",count);
+            sqlite3_finalize(statement);
+            return count;
+        }
+    }
+    else
+    {
+        NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
+    }
+    
+    // Finalize and close database.
+    sqlite3_finalize(statement);
+    
+    return 0;
+}
+
+-(void) removeAllCharges
+{
+    const char *sqlStatement = "delete from Charge";
+    sqlite3_stmt *compiledStatement;
+    if(sqlite3_prepare_v2(db, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+        // Loop through the results and add them to the feeds array
+        while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+            // Read the data from the result row
+            NSLog(@"result is here");
+        }
+        
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+}
+
 
 -(void) close
 {

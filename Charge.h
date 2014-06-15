@@ -12,4 +12,5 @@
 @property int tid;
 @property NSString* name;
 @property int pay;
+@property NSDate* time;
 @end
