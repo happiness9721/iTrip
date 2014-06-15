@@ -12,6 +12,9 @@
 
 @interface SelectCoordinateViewController () <UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -29,13 +32,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // 建立一個region，待會要設定給MapView
     MKCoordinateRegion kaos_digital;
+    if (self.location)
+    {
+        // 設定經緯度
+        kaos_digital.center.latitude = self.latitude;
+        kaos_digital.center.longitude = self.longitude;
+        self.navigationBar.rightBarButtonItem = nil;
+        [self.searchBar setHidden:YES];
+    }
+    else
+    {
+        // 設定經緯度
+        self.latitude = 25.01141;
+        self.longitude = 121.42554;
+    }
     
-    
-    // 設定經緯度
-    kaos_digital.center.latitude = 25.01141;
-    kaos_digital.center.longitude = 121.42554;
+    kaos_digital.center.latitude = self.latitude;
+    kaos_digital.center.longitude = self.longitude;
     
     // 設定縮放比例
     kaos_digital.span.latitudeDelta = 0.007;
@@ -43,7 +57,11 @@
     
     // 把region設定給MapView
     [self.mapView setRegion:kaos_digital];
-    // Do any additional setup after loading the view.
+    //Move the map and zoom
+    MyLocation *myLocation = [[MyLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(self.latitude, self.longitude)];
+    myLocation.title = @"iTrip";
+    myLocation.subtitle = @"媽，我在這裡啦!";
+    [self.mapView addAnnotation:myLocation];
 }
 
 - (void)didReceiveMemoryWarning
