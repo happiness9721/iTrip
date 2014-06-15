@@ -53,7 +53,7 @@
     
     TripLog* tripLog = [[TripLog alloc]init];
     tripLog.tid = trip.tid;
-    tripLog.type = @"text";
+    tripLog.type = TYPE_TEXT;
     tripLog.text = @"text message";
     tripLog.time = [NSDate date];
     
