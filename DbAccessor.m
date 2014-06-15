@@ -140,6 +140,9 @@ NSString * const TYPE_LOCATION = @"position";
     Trip * trip = [[Trip alloc] init];
     int tid = sqlite3_column_int(statement, 0);
     char *name = (char*)sqlite3_column_text(statement, 1);
+    
+    
+    
     char *detail = (char*)sqlite3_column_text(statement, 2);
     char *date = (char*)sqlite3_column_text(statement, 3);
     int budget = sqlite3_column_int(statement, 4);
@@ -152,8 +155,8 @@ NSString * const TYPE_LOCATION = @"position";
     [dateFormat setDateFormat:dbDateFormatString];
     
     trip.tid = tid;
-    trip.name = [NSString stringWithFormat:@"%s", name];
-    trip.detail = [NSString stringWithFormat:@"%s", detail];
+    trip.name = [NSString stringWithUTF8String: name];
+    trip.detail = [NSString stringWithUTF8String: detail];
     trip.date = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
     trip.budget = budget;
     trip.location =[NSString stringWithFormat:@"%s", location];
@@ -260,7 +263,7 @@ NSString * const TYPE_LOCATION = @"position";
     [dateFormat setDateFormat:dbDateFormatString];
     charge.time = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
     charge.tid = tid;
-    charge.name = [NSString stringWithFormat:@"%s", name];
+    charge.name = [NSString stringWithUTF8String:name];
     charge.pay = pay;
     return charge;
 }
@@ -345,7 +348,7 @@ NSString * const TYPE_LOCATION = @"position";
     NSString * typeStr = [NSString stringWithFormat:@"%s", type];
     
     tripLog.tid = tid;
-    tripLog.type = [NSString stringWithFormat:@"%s", type];
+    tripLog.type = [NSString stringWithUTF8String:type];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:dbDateFormatString];
@@ -354,7 +357,7 @@ NSString * const TYPE_LOCATION = @"position";
     
     if(typeStr==TYPE_TEXT){
         char *text = (char*)sqlite3_column_text(statement, 2);
-        tripLog.text =[NSString stringWithFormat:@"%s", text];
+        tripLog.text =[NSString stringWithUTF8String:text];
     }else if(typeStr == TYPE_IMAGE){
         int length = sqlite3_column_bytes(statement, 3);
         NSData* data = [NSData dataWithBytes:sqlite3_column_blob(statement, 3) length:length];
@@ -363,7 +366,7 @@ NSString * const TYPE_LOCATION = @"position";
         char *location = (char*)sqlite3_column_text(statement, 4);
         double latitude = sqlite3_column_double(statement, 5);
         double longitude = sqlite3_column_double(statement, 6);
-        tripLog.location =[NSString stringWithFormat:@"%s", location];
+        tripLog.location =[NSString stringWithUTF8String:location];
         tripLog.latitude = latitude;
         tripLog.longitude = longitude;
     }
