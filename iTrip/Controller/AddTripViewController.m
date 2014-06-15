@@ -7,6 +7,8 @@
 //
 
 #import "AddTripViewController.h"
+#import "AppDelegate.h"
+#import "Trip.h"
 
 @interface AddTripViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *name;
@@ -46,6 +48,17 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Trip *newTrip = [[Trip alloc] init];
+    newTrip.name = self.name.text;
+    newTrip.location = self.location.text;
+    newTrip.detail = self.detail.text;
+    newTrip.budget = (int)self.budget.text;
+    newTrip.latitude = 23.55;
+    newTrip.longitude = 123.5555;
+    newTrip.date = [NSDate date];
+    [delegate addTrip:newTrip];
+
     NSLog(@"AddTrip %@", segue.identifier);
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

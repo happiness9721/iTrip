@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Trip : NSObject
+
 @property int tid;
 @property NSString * name;
 @property NSString * detail;

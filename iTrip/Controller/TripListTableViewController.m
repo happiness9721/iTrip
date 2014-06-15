@@ -7,8 +7,13 @@
 //
 
 #import "TripListTableViewController.h"
+#import "AppDelegate.h"
+#import "Trip.h"
 
 @interface TripListTableViewController ()
+
+@property AppDelegate *delegate;
+@property NSMutableArray *trips;
 
 @end
 
@@ -23,9 +28,17 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.trips = [self.delegate getTrips];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,28 +57,26 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.delegate getTripCount];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    Trip *trip = [self.trips objectAtIndex:indexPath.row];
+    
+    [cell.textLabel setText:trip.name];
+    //[cell.detailTextLabel setText:@"12345"];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

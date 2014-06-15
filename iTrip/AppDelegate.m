@@ -93,21 +93,21 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
     
     
     
-    Trip * trip = [[Trip alloc] init];
-    trip.name = @"trip name";
-    trip.detail = @"trip detail";
-    trip.date = [NSDate date];
-    trip.budget = 500;
-    trip.location = @"location";
-    trip.latitude = 23.55;
-    trip.longitude = 123.5555;
-    
-    
-    [self addTrip:trip];
-    [self getTrip:1];
-    [self getTrips];
-    //[self removeAllTrips];
-    [self getTripCount];
+//    Trip * trip = [[Trip alloc] init];
+//    trip.name = @"trip name";
+//    trip.detail = @"trip detail";
+//    trip.date = [NSDate date];
+//    trip.budget = 500;
+//    trip.location = @"location";
+//    trip.latitude = 23.55;
+//    trip.longitude = 123.5555;
+//    
+//    
+//    [self addTrip:trip];
+//    [self getTrip:1];
+//    [self getTrips];
+//    //[self removeAllTrips];
+//    [self getTripCount];
     
     return YES;
 }
@@ -230,7 +230,7 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
         //Loop through all the returned rows (should be just one)
         while( sqlite3_step(statement) == SQLITE_ROW )
         {
-            NSInteger count = sqlite3_column_int(statement, 0);
+            int count = sqlite3_column_int(statement, 0);
             NSLog(@"Rowcount is %d",count);
             sqlite3_finalize(statement);
             return count;
