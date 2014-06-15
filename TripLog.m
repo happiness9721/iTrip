@@ -21,7 +21,7 @@
 
 -(void)printTripLog{
     
-    NSString* string = [NSString stringWithFormat:@"TripLog: tid=%d, text=%@, image=%@, location=%@, latitude=%g, longitude=%g, time=%@", self.tid, self.type, self.text, self.image, self.location, self.latitude, self.longitude, self.time];
+    NSString* string = [NSString stringWithFormat:@"TripLog: tid=%d, type=%@, text=%@, image=%@, location=%@, latitude=%g, longitude=%g, time=%@", self.tid, self.type, self.text, self.image, self.location, self.latitude, self.longitude, self.time];
     NSLog(@"%@", string);
 }
 
