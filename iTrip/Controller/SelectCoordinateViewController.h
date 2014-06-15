@@ -10,4 +10,8 @@
 
 @interface SelectCoordinateViewController : UIViewController
 
+@property double latitude;
+@property double longitude;
+@property NSString *location;
+
 @end
