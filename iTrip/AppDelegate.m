@@ -37,24 +37,59 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    // 將資料庫檔案複製到具有寫入權限的目錄
-    NSFileManager * fm = [[NSFileManager alloc] init];
-    NSString *src = [[NSBundle mainBundle] pathForResource:@"iTrip" ofType:@"sqlite"];
-    NSString *dst = [NSString stringWithFormat:@"%@/Documents/iTrip.sqlite", NSHomeDirectory()];
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
     
-    // 檢查目的檔案是否存在，如果不存在則複製資料庫
-    if(![fm fileExistsAtPath:dst]){
-        [fm copyItemAtPath:src toPath:dst error:nil];
-    }
+    // Build the path to the database file
+    NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: @"iTrip.sqlite"]];
     
-    // 與資料庫連線，並將連線結果存入db變數中
-    if(sqlite3_open([dst UTF8String], &db)!=SQLITE_OK){
-        db = nil;
-        NSLog(@"資料庫連線失敗");
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    
+    // 如果舊的檔案已經被建立，請執行這一行將就檔案刪除
+    // [filemgr removeItemAtPath:databasePath error:nil];
+
+    
+    if ([filemgr fileExistsAtPath: databasePath ] == NO) {
+        const char *dbpath = [databasePath UTF8String];
+        
+        if (sqlite3_open(dbpath, &db) == SQLITE_OK) {
+            const char *createTripSql="create table if not exists Trip (tid integer primary key autoincrement, name text, detail text, date date,budget integer, location text, latitude real, longitude real)";
+            
+            const char *createChargeSql="create table if not exists Charge (tid integer, name text, pay integer)";
+            
+            const char *createTripLogSql="create table if not exists TripLog (tid integer, text text, pid integer, location text, latitude real, longitude real, date date, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
+            
+            const char *createTripLogPicture="create table if not exists TripLogPicture (pid integer primary key autoincrement, picture blob)";
+            
+            [self tableCreate :db andSqlStatement : createTripSql ];
+            [self tableCreate :db andSqlStatement : createChargeSql];
+            [self tableCreate :db andSqlStatement : createTripLogSql];
+            [self tableCreate :db andSqlStatement : createTripLogPicture];
+
+            //sqlite3_close(db);
+        }
+        else {
+            NSLog(@"Failed to open/create database");
+        }
     }else{
-        NSLog(@"資料庫連線成功");
+        if(sqlite3_open([databasePath UTF8String], &db)!=SQLITE_OK){
+            db = nil;
+            NSLog(@"資料庫連線失敗");
+        }else{
+            NSLog(@"資料庫連線成功");
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -77,6 +112,21 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
     return YES;
 }
 
+- (BOOL) tableCreate :(sqlite3*) database andSqlStatement:(const char *) sql
+{
+    char *errorMsg;
+    if (sqlite3_exec(database, sql, NULL, NULL, &errorMsg)==SQLITE_OK) {
+        NSLog(@"TABLE OK");
+        //建立成功之後要對資料庫操作的程式碼
+    } else {
+        //建立失敗時的處理
+        NSLog(@"error: %s",errorMsg);
+        //清空錯誤訊息
+        sqlite3_free(errorMsg);
+    }
+    return YES;
+}
+
 - (void)addTrip: (Trip*) trip
 {
     if(db!=nil){
@@ -90,7 +140,7 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
         NSString * sqlStr = [NSString stringWithFormat:@"insert into Trip (name, detail, date, budget, location, latitude, longitude) Values ('%@', '%@', '%@', '%@', '%@', '%@', '%@')", trip.name, trip.detail, date, budget, trip.location, latitude, longitude];
         NSLog(@"sqlstr = %@", sqlStr);
         sqlite3_stmt * statement;
-        sqlite3_prepare(db, [sqlStr UTF8String], -1, &statement, NULL);
+        sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE){
             NSLog(@"成功加入一筆Trip資料");
         }else{
@@ -106,7 +156,7 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
     NSString * sqlStr = [NSString stringWithFormat:@"select * from Trip where tid = %d", tid];
     
     sqlite3_stmt * statement;
-    sqlite3_prepare(db, [sqlStr UTF8String], -1, &statement, NULL);
+    sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
     while(sqlite3_step(statement)==SQLITE_ROW){
         NSLog(@"成功查詢Trip資料");
         Trip* trip = [self statementToTrip:statement];
@@ -161,7 +211,7 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
     NSString * sqlStr = @"select * from Trip";
     
     sqlite3_stmt * statement;
-    sqlite3_prepare(db, [sqlStr UTF8String], -1, &statement, NULL);
+    sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
     while(sqlite3_step(statement)==SQLITE_ROW){
         NSLog(@"成功查詢一筆Trip資料");
         Trip* trip = [self statementToTrip:statement];
@@ -182,6 +232,7 @@ NSString * dateFormatString = @"yyyy-MM-dd HH:mm:ss";
         {
             NSInteger count = sqlite3_column_int(statement, 0);
             NSLog(@"Rowcount is %d",count);
+            sqlite3_finalize(statement);
             return count;
         }
     }

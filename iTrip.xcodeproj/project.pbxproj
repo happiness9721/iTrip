@@ -73,7 +73,6 @@
 		2A321A9F194C527700B599BF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = ../Trip.h; sourceTree = "<group>"; };
 		2A321AA0194C527700B599BF /* DbAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbAccessor.m; path = ../DbAccessor.m; sourceTree = "<group>"; };
 		2A321AA1194C527700B599BF /* Charge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Charge.m; path = ../Charge.m; sourceTree = "<group>"; };
-		2A321AA7194C60B900B599BF /* iTrip.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTrip.sqlite; sourceTree = "<group>"; };
 		2AEE2916194ADB2900146CDB /* TripListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListTableViewController.h; sourceTree = "<group>"; };
 		2AEE2917194ADB2900146CDB /* TripListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListTableViewController.m; sourceTree = "<group>"; };
 		2AEE2919194ADD7D00146CDB /* EmptyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTripViewController.h; sourceTree = "<group>"; };
@@ -116,7 +115,6 @@
 		2A000FB8194AD72900FB5289 = {
 			isa = PBXGroup;
 			children = (
-				2A321AA7194C60B900B599BF /* iTrip.sqlite */,
 				2A000FCA194AD72900FB5289 /* iTrip */,
 				2A000FE9194AD72900FB5289 /* iTripTests */,
 				2A000FC3194AD72900FB5289 /* Frameworks */,

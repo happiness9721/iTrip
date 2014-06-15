@@ -53,16 +53,12 @@
     if (sqlite3_exec(database, sql, NULL, NULL, &errorMsg)==SQLITE_OK) {
         NSLog(@"TABLE OK");
         //建立成功之後要對資料庫操作的程式碼
-        
     } else {
         //建立失敗時的處理
         NSLog(@"error: %s",errorMsg);
-        
         //清空錯誤訊息
         sqlite3_free(errorMsg);
     }
-
-    
     return YES;
 }
 
