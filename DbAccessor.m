@@ -14,6 +14,7 @@
 
 @implementation DbAccessor
 NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
+NSString * dbFileName = @"iTrip.sqlite";
 
 - (id) init
 {
@@ -23,13 +24,9 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
         NSString *docsDir = [dirPaths objectAtIndex:0];
         
         // Build the path to the database file
-        NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: @"iTrip.sqlite"]];
+        NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: dbFileName]];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        // 如果舊的檔案已經被建立，請執行這一行將就檔案刪除
-        // [filemgr removeItemAtPath:databasePath error:nil];
-        
         
         if ([fileManager fileExistsAtPath: databasePath ] == NO) {
             const char *dbpath = [databasePath UTF8String];
@@ -61,9 +58,23 @@ NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
                 NSLog(@"資料庫連線成功");
             }
         }
-
     }
     return self;
+}
+
+-(void) resetDb
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    
+    // Build the path to the database file
+    NSString *databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: dbFileName]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:databasePath error:nil];
+    if(db!=NULL){
+        [self close];
+    }
+    db = NULL;
 }
 
 - (BOOL) tableCreate :(sqlite3*) database andSqlStatement:(const char *) sql
