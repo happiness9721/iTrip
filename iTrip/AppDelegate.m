@@ -18,22 +18,6 @@
 {
     db = [[DbAccessor alloc] init];
     
-//    Trip * trip = [[Trip alloc] init];
-//    trip.name = @"trip name";
-//    trip.detail = @"trip detail";
-//    trip.date = [NSDate date];
-//    trip.budget = 500;
-//    trip.location = @"location";
-//    trip.latitude = 23.55;
-//    trip.longitude = 123.5555;
-//    
-//    
-//    [self addTrip:trip];
-//    [self getTrip:1];
-//    [self getTrips];
-//    //[self removeAllTrips];
-//    [self getTripCount];
-    
     return YES;
 }
 
@@ -54,29 +38,7 @@
 
 -(int) getTripCount
 {
-    const char* sqlStatement = "SELECT COUNT(*) FROM Trip";
-    sqlite3_stmt *statement;
-    
-    if( sqlite3_prepare_v2(db, sqlStatement, -1, &statement, NULL) == SQLITE_OK )
-    {
-        //Loop through all the returned rows (should be just one)
-        while( sqlite3_step(statement) == SQLITE_ROW )
-        {
-            int count = sqlite3_column_int(statement, 0);
-            NSLog(@"Rowcount is %d",count);
-            sqlite3_finalize(statement);
-            return count;
-        }
-    }
-    else
-    {
-        NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
-    }
-    
-    // Finalize and close database.
-    sqlite3_finalize(statement);
-
-    return 0;
+    return [db getTripCount];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
