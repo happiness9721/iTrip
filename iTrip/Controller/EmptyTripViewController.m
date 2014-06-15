@@ -7,6 +7,7 @@
 //
 
 #import "EmptyTripViewController.h"
+#import "AppDelegate.h"
 
 @interface EmptyTripViewController ()
 
@@ -32,6 +33,16 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([delegate getTripCount] > 0)
+    {
+        [self.TripListContainerView setHidden:NO];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -40,7 +51,7 @@
 
 - (IBAction)unwindToTripList:(UIStoryboardSegue *)unwindSegue
 {
-    [self.TripListContainerView setHidden:NO];
+    //unwindSegue.sourceViewController
 }
 
 /*
