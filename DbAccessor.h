@@ -10,6 +10,7 @@
 #import <sqlite3.h>
 #import "Trip.h"
 #import "Charge.h"
+#import "TripLog.h"
 
 @interface DbAccessor : NSObject
 {
@@ -30,6 +31,10 @@
 -(int) getChargeCount :(int) tid;
 -(void) removeAllCharges;
 
+-(void) addTripLog : (TripLog*) tripLog;
+-(NSMutableArray*) getTripLogs:(int) tid;
+-(int) getTripLogCount :(int) tid;
+-(void) removeAllTripLogs;
 
 
 -(void)close;

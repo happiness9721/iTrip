@@ -16,6 +16,8 @@
 @property NSString * location;
 @property double latitude;
 @property double longitude;
-@property NSDate * date;
+@property NSDate * time;
+
+-(void)printTripLog;
 
 @end

@@ -19,5 +19,6 @@
 @property double latitude;
 @property double longitude;
 
+-(void) printTrip;
 
 @end

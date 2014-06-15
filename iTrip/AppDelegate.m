@@ -17,7 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     db = [[DbAccessor alloc] init];
-    [db resetDb];
+//    [db resetDb];
     db = [[DbAccessor alloc] init];
     [db removeAllTrips];
     [db removeAllCharges];

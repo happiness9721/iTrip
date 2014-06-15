@@ -13,4 +13,6 @@
 @property NSString* name;
 @property int pay;
 @property NSDate* time;
+
+-(void) printCharge;
 @end

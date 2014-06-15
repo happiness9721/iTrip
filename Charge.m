@@ -10,4 +10,10 @@
 
 @implementation Charge
 
+-(void) printCharge
+{
+    NSString* string = [NSString stringWithFormat:@"Charge: tid=%d, name=%@, pay=%d, time=%@", self.tid, self.name, self.pay, self.time];
+    NSLog(@"%@", string);
+}
+
 @end

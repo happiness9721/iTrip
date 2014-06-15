@@ -9,5 +9,10 @@
 #import "Trip.h"
 
 @implementation Trip
-
+ 
+-(void) printTrip
+{
+    NSString* string = [NSString stringWithFormat:@"Trip: tid=%d, name=%@, detail=%@, date=%@, budget=%d, location=%@, latitude=%g, longitude=%g", self.tid, self.name, self.detail, self.date, self.budget, self.location, self.latitude, self.longitude];
+    NSLog(@"%@", string);
+}
 @end

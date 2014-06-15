@@ -15,7 +15,9 @@
 @implementation DbAccessor
 NSString * dbDateFormatString = @"yyyy-MM-dd HH:mm:ss";
 NSString * dbFileName = @"iTrip.sqlite";
-
+NSString * TYPE_TEXT = @"text";
+NSString * TYPE_IMAGE = @"image";
+NSString * TYPE_LOCATION = @"position";
 - (id) init
 {
     self = [super init];
@@ -36,9 +38,9 @@ NSString * dbFileName = @"iTrip.sqlite";
                 
                 const char *createChargeSql="create table if not exists Charge (tid integer, name text, pay integer, time date)";
                 
-                const char *createTripLogSql="create table if not exists TripLog (tid integer, text text, pid integer, location text, latitude real, longitude real, date date, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
+                const char *createTripLogSql="create table if not exists TripLog (tid integer, type text, text text, iid integer, location text, latitude real, longitude real, time date, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
                 
-                const char *createTripLogPicture="create table if not exists TripLogPicture (pid integer primary key autoincrement, picture blob)";
+                const char *createTripLogPicture="create table if not exists TripLogImage (iid integer primary key autoincrement, image blob)";
                 
                 [self tableCreate :db andSqlStatement : createTripSql];
                 [self tableCreate :db andSqlStatement : createChargeSql];
@@ -267,7 +269,6 @@ NSString * dbFileName = @"iTrip.sqlite";
     return charges;
 }
 
-
 -(Charge*) statementToCharge: (sqlite3_stmt*) statement
 {
     Charge * charge = [[Charge alloc] init];
@@ -317,10 +318,7 @@ NSString * dbFileName = @"iTrip.sqlite";
     {
         NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
     }
-    
-    // Finalize and close database.
     sqlite3_finalize(statement);
-    
     return 0;
 }
 
@@ -329,17 +327,130 @@ NSString * dbFileName = @"iTrip.sqlite";
     const char *sqlStatement = "delete from Charge";
     sqlite3_stmt *compiledStatement;
     if(sqlite3_prepare_v2(db, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-        // Loop through the results and add them to the feeds array
         while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-            // Read the data from the result row
             NSLog(@"result is here");
         }
-        
-        // Release the compiled statement from memory
         sqlite3_finalize(compiledStatement);
     }
 }
 
+-(void) addTripLog : (TripLog*) tripLog{
+    if(db!=nil){
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat: dbDateFormatString];
+        NSString *time=[dateFormat stringFromDate:tripLog.time];
+        NSString * sqlStr;
+        if(tripLog.type==TYPE_IMAGE){
+            int iid = [self addImage: tripLog.image];
+            sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, iid, time) Values ('%d', '%@', '%d', '%@')", tripLog.tid, tripLog.type, iid, time];
+        }else if(tripLog.type== TYPE_TEXT){
+            sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, text, time) Values ('%d', '%@', '%@', '%@')", tripLog.tid, tripLog.type, tripLog.text, time];
+        }else if(tripLog.type==TYPE_LOCATION){
+            sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, location, latitude, longitude, time) Values ('%d', '%@', '%@', '%lf', '%lf', '%@')", tripLog.tid, tripLog.type, tripLog.location, tripLog.latitude, tripLog.longitude, time];
+        }
+        NSLog(@"sqlstr = %@", sqlStr);
+        sqlite3_stmt * statement;
+        sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE){
+            NSLog(@"成功加入一筆TripLog資料");
+        }else{
+            NSLog(@"加入TripLog失敗");
+        }
+        sqlite3_finalize(statement);
+    }
+
+}
+
+-(int) addImage:(UIImage*) image
+{
+    return 0;
+}
+
+-(TripLog*) statementToTripLog: (sqlite3_stmt*) statement
+{
+    TripLog * tripLog = [[TripLog alloc] init];
+    int tid = sqlite3_column_int(statement, 0);
+    char *type = (char*)sqlite3_column_text(statement, 1);
+    char *time = (char*)sqlite3_column_text(statement, 7);
+    NSString * typeStr = [NSString stringWithFormat:@"%s", type];
+    
+    tripLog.tid = tid;
+    tripLog.type = [NSString stringWithFormat:@"%s", type];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:dbDateFormatString];
+    tripLog.time = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", time]];
+    
+    
+    if(typeStr==TYPE_TEXT){
+        char *text = (char*)sqlite3_column_text(statement, 2);
+        tripLog.text =[NSString stringWithFormat:@"%s", text];
+    }else if(typeStr == TYPE_IMAGE){
+        int length = sqlite3_column_bytes(statement, 3);
+        NSData* data = [NSData dataWithBytes:sqlite3_column_blob(statement, 3) length:length];
+        tripLog.image = [UIImage imageWithData:data];
+    }else if(typeStr == TYPE_LOCATION){
+        char *location = (char*)sqlite3_column_text(statement, 4);
+        double latitude = sqlite3_column_double(statement, 5);
+        double longitude = sqlite3_column_double(statement, 6);
+        tripLog.location =[NSString stringWithFormat:@"%s", location];
+        tripLog.latitude = latitude;
+        tripLog.longitude = longitude;
+    }
+    return tripLog;
+}
+
+
+-(NSMutableArray*) getTripLogs:(int) tid
+{
+    NSLog(@"查詢TripLogs");
+    NSMutableArray * tripLogs = [[NSMutableArray alloc] init];
+    NSString * sqlStr = [NSString stringWithFormat:@"select * from TripLog where tid = %d", tid];
+    
+    sqlite3_stmt * statement;
+    sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+    while(sqlite3_step(statement)==SQLITE_ROW){
+        TripLog* tripLog = [self statementToTripLog:statement];
+        [tripLogs addObject:tripLog];
+    }
+    return tripLogs;
+}
+
+-(int) getTripLogCount :(int) tid
+{
+    NSString * sqlStr = [NSString stringWithFormat:@"select COUNT(*) from TripLog where tid = %d", tid];
+    
+    const char* sqlStatement = [sqlStr UTF8String];
+    sqlite3_stmt *statement;
+    if( sqlite3_prepare_v2(db, sqlStatement, -1, &statement, NULL) == SQLITE_OK )
+    {
+        //Loop through all the returned rows (should be just one)
+        while( sqlite3_step(statement) == SQLITE_ROW )
+        {
+            NSInteger count = sqlite3_column_int(statement, 0);
+            NSLog(@"Rowcount is %d",count);
+            sqlite3_finalize(statement);
+            return count;
+        }
+    }
+    else
+    {
+        NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
+    }
+    sqlite3_finalize(statement);
+    return 0;
+}
+
+-(void) removeAllTripLogs
+{
+    const char *sqlStatement = "delete from TripLog";
+    sqlite3_stmt *compiledStatement;
+    if(sqlite3_prepare_v2(db, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+            NSLog(@"result is here");
+        }
+        sqlite3_finalize(compiledStatement);
+    }}
 
 -(void) close
 {
