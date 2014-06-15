@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
 #import "Trip.h"
+#import "DbAccessor.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    sqlite3 * db;
+    DbAccessor * db;
 }
 
--(sqlite3*) getDB;
 -(void) addTrip :(Trip*) trip;
 -(Trip*) getTrip :(int) tid;
 -(NSMutableArray*) getTrips;

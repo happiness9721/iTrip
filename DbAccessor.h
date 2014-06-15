@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "Trip.h"
 
 @interface DbAccessor : NSObject
+{
+    sqlite3 * db;
+}
 
-- (BOOL) tableCreate :(sqlite3*) database andSqlStatement:(const char *) sql;
+-(id) init;
+-(void) addTrip :(Trip*) trip;
+-(Trip*) getTrip :(int) tid;
+-(NSMutableArray*) getTrips;
+-(int) getTripCount;
+-(void) removeAllTrips;
+
+-(void)close;
+
 @end
