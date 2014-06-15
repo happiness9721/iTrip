@@ -7,6 +7,8 @@
 //
 
 #import "AddTripViewController.h"
+#import "SelectDateViewController.h"
+#import "SelectCoordinateViewController.h"
 #import "AppDelegate.h"
 #import "Trip.h"
 
@@ -16,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *detail;
 @property (weak, nonatomic) IBOutlet UITextField *budget;
 @property (weak, nonatomic) IBOutlet UIButton *date;
+@property NSDate *selectDate;
+@property double latitude;
+@property double longitude;
 
 @end
 
@@ -33,6 +38,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [self.date setTitle:[dateFormatter stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+    [self.date sizeToFit];
     // Do any additional setup after loading the view.
 }
 
@@ -48,7 +57,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier  isEqual: @"unwindToTripList"])
+    if([segue.identifier isEqual:@"unwindToTripList"])
     {
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         Trip *newTrip = [[Trip alloc] init];
@@ -56,16 +65,31 @@
         newTrip.location = self.location.text;
         newTrip.detail = self.detail.text;
         newTrip.budget = (int)self.budget.text;
-        newTrip.latitude = 23.55;
-        newTrip.longitude = 123.5555;
-        newTrip.date = [NSDate date];
+        newTrip.latitude = self.latitude;
+        newTrip.longitude = self.longitude;
+        newTrip.date = self.selectDate;
         [delegate addTrip:newTrip];
     }
 }
 
 - (IBAction)unwindAddTripView:(UIStoryboardSegue *)unwindSegue
 {
-    
+    if ([unwindSegue.identifier isEqual:@"unwindFromDate"])
+    {
+        SelectDateViewController *sourceViewController = unwindSegue.sourceViewController;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [self.date setTitle:[dateFormatter stringFromDate:sourceViewController.datePicker.date] forState:UIControlStateNormal];
+        [self.date sizeToFit];
+        self.selectDate = sourceViewController.datePicker.date;
+    }
+    else if ([unwindSegue.identifier isEqual:@"unwindFromMap"])
+    {
+        SelectCoordinateViewController *sourceViewController = unwindSegue.sourceViewController;
+        self.location.text = sourceViewController.location;
+        self.latitude = sourceViewController.latitude;
+        self.longitude = sourceViewController.longitude;
+    }
 }
 
 

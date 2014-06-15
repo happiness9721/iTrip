@@ -79,18 +79,21 @@
         NSString *longitudeString = [locationArray valueForKey:@"lng"];
         
         NSLog(@"LatitudeString:%@ & LongitudeString:%@", latitudeString, longitudeString);
-        [self zoomMapAndCenterAtLatitude:latitudeString.doubleValue andLongitude:longitudeString.doubleValue];
+        self.latitude = latitudeString.doubleValue;
+        self.longitude = longitudeString.doubleValue;
+        self.location = inAddress;
+        [self zoomMapAndCenterAtLatitude];
     }
     else
         NSLog(@"Got Nothing");
 }
 
 
-- (void) zoomMapAndCenterAtLatitude:(double) latitude andLongitude:(double) longitude
+- (void) zoomMapAndCenterAtLatitude
 {
     MKCoordinateRegion region;
-    region.center.latitude  = latitude;
-    region.center.longitude = longitude;
+    region.center.latitude  = self.latitude;
+    region.center.longitude = self.longitude;
     
     //Set Zoom level using Span
     MKCoordinateSpan span;
@@ -100,7 +103,7 @@
     
     //Move the map and zoom
     [self.mapView setRegion:region animated:YES];
-    MyLocation *myLocation = [[MyLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude)];
+    MyLocation *myLocation = [[MyLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(self.latitude, self.longitude)];
     myLocation.title = @"iTrip";
     myLocation.subtitle = @"媽，我在這裡啦!";
     [self.mapView addAnnotation:myLocation];

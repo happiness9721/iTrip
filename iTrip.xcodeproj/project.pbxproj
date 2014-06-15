@@ -29,6 +29,7 @@
 		2AEE2918194ADB2900146CDB /* TripListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE2917194ADB2900146CDB /* TripListTableViewController.m */; };
 		2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */; };
 		2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */; };
+		D81EC696194D97A7009D7563 /* SelectDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D81EC695194D97A7009D7563 /* SelectDateViewController.m */; };
 		D879A6F8194D7E8200FFA52C /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D879A6F7194D7E8200FFA52C /* MyLocation.m */; };
 		D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3C28194C341600A930B7 /* CustomIOS7AlertView.m */; };
 		D8FD3C2B194C3B4600A930B7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8FD3C2A194C3B4600A930B7 /* MapKit.framework */; };
@@ -80,6 +81,8 @@
 		2AEE291A194ADD7D00146CDB /* EmptyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyTripViewController.m; sourceTree = "<group>"; };
 		2AEE291C194AF6A400146CDB /* ChargeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeListTableViewController.h; sourceTree = "<group>"; };
 		2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeListTableViewController.m; sourceTree = "<group>"; };
+		D81EC694194D97A7009D7563 /* SelectDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateViewController.h; sourceTree = "<group>"; };
+		D81EC695194D97A7009D7563 /* SelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateViewController.m; sourceTree = "<group>"; };
 		D879A6F6194D7E8200FFA52C /* MyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
 		D879A6F7194D7E8200FFA52C /* MyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
 		D8FD3C27194C341600A930B7 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				D8FD3C2D194C3BE500A930B7 /* SelectCoordinateViewController.m */,
 				2A321A6F194C461200B599BF /* AddTripViewController.h */,
 				2A321A70194C461200B599BF /* AddTripViewController.m */,
+				D81EC694194D97A7009D7563 /* SelectDateViewController.h */,
+				D81EC695194D97A7009D7563 /* SelectDateViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81EC696194D97A7009D7563 /* SelectDateViewController.m in Sources */,
 				D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */,
 				D879A6F8194D7E8200FFA52C /* MyLocation.m in Sources */,
 				2A321AA5194C527700B599BF /* Charge.m in Sources */,
