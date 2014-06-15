@@ -250,6 +250,29 @@ NSString * const TYPE_LOCATION = @"position";
     return charges;
 }
 
+-(int) getChargePaySum :(int) tid
+{
+    NSString * sqlStr = [NSString stringWithFormat:@"select SUM(pay) from Charge where tid = %d", tid];
+    const char* sqlStatement = [sqlStr UTF8String];
+    sqlite3_stmt *statement;
+    
+    if( sqlite3_prepare_v2(db, sqlStatement, -1, &statement, NULL) == SQLITE_OK )
+    {
+        while( sqlite3_step(statement) == SQLITE_ROW )
+        {
+            NSInteger count = sqlite3_column_int(statement, 0);
+            sqlite3_finalize(statement);
+            return count;
+        }
+    }
+    else
+    {
+        NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
+    }
+    sqlite3_finalize(statement);
+    return 0;
+}
+
 -(Charge*) statementToCharge: (sqlite3_stmt*) statement
 {
     Charge * charge = [[Charge alloc] init];

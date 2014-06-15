@@ -48,7 +48,10 @@
     [charge printCharge];
     [db addCharge:charge];
     [db addCharge:charge];
-    [db getCharges:charge.tid];
+    [db getCharges:trip.tid];
+    int sum = [db getChargePaySum:trip.tid];
+    NSLog(@"Sum = %d", sum);
+    
     [db getChargeCount: charge.tid];
     
     TripLog* tripLog = [[TripLog alloc]init];

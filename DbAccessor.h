@@ -35,6 +35,7 @@ FOUNDATION_EXPORT NSString * const TYPE_LOCATION;
 -(void) addCharge : (Charge*) charge;
 -(NSMutableArray*) getCharges:(int) tid;
 -(int) getChargeCount :(int) tid;
+-(int) getChargePaySum :(int) tid;
 -(void) removeAllCharges;
 
 -(void) addTripLog : (TripLog*) tripLog;
