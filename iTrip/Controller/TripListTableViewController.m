@@ -67,26 +67,56 @@
     return [self.delegate getTripCount];
 }
 
+// 以下程式碼請保留
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static int i=0;
+//    UITableViewCell *cell;
+//    if(i++%2==0){
+//        cell = [self.tableView dequeueReusableCellWithIdentifier:@"tripCell"];
+//    }
+//    else{
+//        cell = [self.tableView dequeueReusableCellWithIdentifier:@"secondCell"];
+//    }
+//    return cell.bounds.size.height;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
-    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
     Trip *trip = [self.trips objectAtIndex:indexPath.row];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString=[dateFormat stringFromDate:trip.date];
-    
-    
-    UILabel *nameLabel = (UILabel *)[cell.contentView viewWithTag:10];
-    [nameLabel setText:trip.name];
-    UILabel *dateLabel = (UILabel *)[cell.contentView viewWithTag:11];
-    [dateLabel setText:dateString];
-    
-    
-    //[cell.textLabel setText:trip.name];
-    //[cell.detailTextLabel setText:@"12345"];
-    
+    [cell.textLabel setText:trip.name];
+    [cell.detailTextLabel setText:dateString];
     return cell;
+    
+// 
+//    static int i=0;
+//    UITableViewCell *cell;
+//    if(i++%2==0){
+//        cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
+//        
+//        Trip *trip = [self.trips objectAtIndex:indexPath.row];
+//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+//        NSString *dateString=[dateFormat stringFromDate:trip.date];
+//        [cell.textLabel setText:trip.name];
+//        [cell.detailTextLabel setText:dateString];
+//    }else{
+//        cell = [tableView dequeueReusableCellWithIdentifier:@"secondCell" forIndexPath:indexPath];
+//        
+//        Trip *trip = [self.trips objectAtIndex:indexPath.row];
+//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+//        NSString *dateString=[dateFormat stringFromDate:trip.date];
+//        [cell.textLabel setText:trip.name];
+//        [cell.detailTextLabel setText:dateString];
+//    }
+//    
+//    
+//    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
