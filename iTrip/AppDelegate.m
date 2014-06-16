@@ -14,6 +14,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     db = [[DbAccessor alloc] init];
+//    [db resetDb];
+//    db = [[DbAccessor alloc] init];
+//    [db addDefaultData];
     return YES;
 }
 

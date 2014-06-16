@@ -35,14 +35,14 @@ NSString * const TYPE_LOCATION = @"position";
                 
                 const char *createChargeSql="create table if not exists Charge (tid integer, name text, pay integer, time date)";
                 
-                const char *createTripLogSql="create table if not exists TripLog (tid integer, type text, text text, iid integer, location text, latitude real, longitude real, time date)";//, FOREIGN KEY(pid) REFERENCES TripLogPicture(pid))";
-                
                 const char *createTripLogPicture="create table if not exists TripLogImage (iid integer primary key autoincrement, image blob)";
+                
+                const char *createTripLogSql="create table if not exists TripLog (tid integer, type text, text text, iid integer, location text, latitude real, longitude real, time date, FOREIGN KEY(iid) REFERENCES TripLogPicture(iid))";
                 
                 [self tableCreate :db andSqlStatement : createTripSql];
                 [self tableCreate :db andSqlStatement : createChargeSql];
-                [self tableCreate :db andSqlStatement : createTripLogSql];
                 [self tableCreate :db andSqlStatement : createTripLogPicture];
+                [self tableCreate :db andSqlStatement : createTripLogSql];
                 
                 //sqlite3_close(db);
             }
@@ -364,12 +364,12 @@ NSString * const TYPE_LOCATION = @"position";
         NSString *time=[dateFormat stringFromDate:tripLog.time];
         
         NSString * sqlStr;
-        if(tripLog.type==TYPE_IMAGE){
+        if([tripLog.type isEqualToString: TYPE_IMAGE]){
             int iid = [self addImage: tripLog.image];
             sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, text, iid, time) Values ('%d', '%@', '%@', '%d', '%@')", tripLog.tid, tripLog.type, tripLog.text, iid, time];
-        }else if(tripLog.type== TYPE_TEXT){
+        }else if([tripLog.type isEqualToString: TYPE_TEXT]){
             sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, text, time) Values ('%d', '%@', '%@', '%@')", tripLog.tid, tripLog.type, tripLog.text, time];
-        }else if(tripLog.type==TYPE_LOCATION){
+        }else if([tripLog.type isEqualToString: TYPE_LOCATION]){
             sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, location, latitude, longitude, time) Values ('%d', '%@', '%@', '%lf', '%lf', '%@')", tripLog.tid, tripLog.type, tripLog.location, tripLog.latitude, tripLog.longitude, time];
         }
         NSLog(@"addTripLog sqlstr = %@", sqlStr);
@@ -393,7 +393,7 @@ NSString * const TYPE_LOCATION = @"position";
         NSData* data = UIImageJPEGRepresentation(image, 1.0);
         
         sqlite3_stmt * statement;
-        char * sql = "insert into TripLogImage Values (1, ?)";
+        char * sql = "insert into TripLogImage (image) Values (?)";
         sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
         
         sqlite3_bind_blob(statement, 1, [data bytes], [data length], NULL);
@@ -402,10 +402,16 @@ NSString * const TYPE_LOCATION = @"position";
             NSLog(@"成功加入一筆Image資料");
         }else{
             NSLog(@"加入Image失敗");
+            NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
+
         }
         sqlite3_finalize(statement);
         sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(db);
-        return (int)lastRowId;
+        int iid = (int)lastRowId;
+        image = [self getImage:iid];
+        
+        
+        return iid;
     }
     return 0;
 }
@@ -413,14 +419,18 @@ NSString * const TYPE_LOCATION = @"position";
 -(UIImage*) getImage:(int) iid
 {
     UIImage * image;
-    NSString * sqlStr = [NSString stringWithFormat: @"select * from TripLogImage where tid = %d", iid];
+    NSString * sqlStr = [NSString stringWithFormat: @"select * from TripLogImage where iid = %d", iid];
     
     sqlite3_stmt * statement;
     sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
-    while(sqlite3_step(statement)==SQLITE_ROW){
+    
+    if(sqlite3_step(statement)==SQLITE_ROW){
         int length = sqlite3_column_bytes(statement, 1);
-        NSData * data = [NSData dataWithBytes:sqlite3_column_blob(statement, 1) length:length];
+        NSData* data = [NSData dataWithBytes:sqlite3_column_blob(statement, 1) length:length];
         image = [UIImage imageWithData:data];
+    }else{
+        NSLog(@"抓取Image失敗");
+        NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(db) );
     }
     return image;
 }
@@ -439,7 +449,6 @@ NSString * const TYPE_LOCATION = @"position";
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:dbDateFormatString];
     tripLog.time = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", time]];
-    
     
     if([typeStr isEqualToString: TYPE_TEXT]){
         char *text = (char*)sqlite3_column_text(statement, 2);
@@ -464,14 +473,29 @@ NSString * const TYPE_LOCATION = @"position";
 {
     NSLog(@"查詢TripLogs");
     NSMutableArray * tripLogs = [[NSMutableArray alloc] init];
-    NSString * sqlStr = [NSString stringWithFormat:@"select * from TripLog where tid = %d", tid];
+//    NSString * sqlStr = [NSString stringWithFormat:@"select * from TripLog where tid = %d", tid];
+    char* sql = "select tid, type, text, image, location, latitude, longitude, time from TripLog left join TripLogImage on TripLog.iid=TripLogImage.iid";
+    
+    /*
+     (tid, type, text, image, location, latitude, longitude, time
+
+     
+     
+     SELECT customers.Name, orders.Order_No
+     FROM customers
+     LEFT JOIN orders
+     ON customers.C_Id=orders.C_Id;
+
+     */
+    
     
     sqlite3_stmt * statement;
-    sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+    sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
     while(sqlite3_step(statement)==SQLITE_ROW){
         TripLog* tripLog = [self statementToTripLog:statement];
         [tripLogs addObject:tripLog];
     }
+    sqlite3_finalize(statement);
     return tripLogs;
 }
 

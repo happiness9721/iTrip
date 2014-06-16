@@ -13,6 +13,7 @@
 @property NSString * type;
 @property NSString* text;
 @property UIImage * image;
+@property int iid;
 @property NSString * location;
 @property double latitude;
 @property double longitude;
