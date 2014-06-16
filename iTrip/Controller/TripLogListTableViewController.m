@@ -7,8 +7,15 @@
 //
 
 #import "TripLogListTableViewController.h"
+#import "AppDelegate.h"
+#import "Trip.h"
+#import "TripLog.h"
+#import "TripTabBarViewController.h"
 
 @interface TripLogListTableViewController ()
+@property AppDelegate *delegate;
+@property NSMutableArray *tripLogs;
+@property Trip *trip;
 
 @end
 
@@ -27,6 +34,12 @@
 {
     [super viewDidLoad];
     
+    self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.tabBarController;
+    self.trip = tripTabBarViewControll.trip;
+
+    self.tripLogs = [self.delegate getTripLogs:self.trip.tid];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,16 +57,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.delegate getTripLogCount:self.trip.tid];
 }
 
 /*
