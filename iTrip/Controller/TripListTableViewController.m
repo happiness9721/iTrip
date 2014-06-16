@@ -81,15 +81,33 @@
 //    return cell.bounds.size.height;
 //}
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tripCellIdentifier"];
+    return cell.bounds.size.height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tripCellIdentifier" forIndexPath:indexPath];
     Trip *trip = [self.trips objectAtIndex:indexPath.row];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString=[dateFormat stringFromDate:trip.date];
-    [cell.textLabel setText:trip.name];
-    [cell.detailTextLabel setText:dateString];
+    UILabel * nameLabel = (UILabel*) [cell.contentView viewWithTag:1];
+    UILabel * timeLabel = (UILabel*) [cell.contentView viewWithTag:2];
+    UILabel * budgetLabel = (UILabel*) [cell.contentView viewWithTag:3];
+    UILabel * restLabel = (UILabel*) [cell.contentView viewWithTag:4];
+    nameLabel.text = trip.name;
+    timeLabel.text = dateString;
+    budgetLabel.text = [NSString stringWithFormat:@"預算:%d", trip.budget];
+    int cost = [self.delegate getChargePaySum:trip.tid];
+    restLabel.text = [NSString stringWithFormat:@"剩餘:%d", trip.budget-cost];
+    
+    
+//    [cell.textLabel setText:trip.name];
+//    [cell.detailTextLabel setText:dateString];
     return cell;
     
 // 
