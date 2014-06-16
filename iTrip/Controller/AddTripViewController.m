@@ -46,6 +46,21 @@
     // Do any additional setup after loading the view.
 }
 
+// 所有的TextField的didEndOnExit都註冊這個function
+- (IBAction)didEndOnExit:(UITextField *) sender
+{
+    [sender resignFirstResponder];
+}
+
+// 這個function是用在當使用者點及畫面空白處時關閉虛擬鍵盤
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.budget resignFirstResponder];
+    [self.name resignFirstResponder];
+    [self.detail resignFirstResponder];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

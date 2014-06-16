@@ -43,6 +43,8 @@ FOUNDATION_EXPORT NSString * const TYPE_LOCATION;
 -(int) getTripLogCount :(int) tid;
 -(void) removeAllTripLogs;
 
+-(void) addDefaultData;
+
 
 -(void)close;
 
