@@ -38,14 +38,13 @@
     [super viewDidLoad];
     
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
     
     TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.tabBarController;
     self.nameTextField.text = tripTabBarViewControll.trip.name;
     
     self.locationTextField.text = tripTabBarViewControll.trip.location;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
     self.dateTextField.text = [dateFormat stringFromDate:tripTabBarViewControll.trip.date];
     self.detailTextField.text = tripTabBarViewControll.trip.detail;
     self.budgetTextField.text = [NSString stringWithFormat:@"%d",tripTabBarViewControll.trip.budget];

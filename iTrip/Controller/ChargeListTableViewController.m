@@ -7,7 +7,6 @@
 //
 
 #import "ChargeListTableViewController.h"
-#import "CustomIOS7AlertView.h"
 
 @interface ChargeListTableViewController ()
 
@@ -116,17 +115,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)addCharge:(id)sender
-{
-    CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
-    [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"取消", @"完成", nil]];
-    UIViewController *customViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"chargeCheck"];
-    UIView *customView = customViewController.view;
-    customView.frame = CGRectMake(0, 0, 180, 100);
-    
-    [alertView setContainerView:customView];
-    [alertView show];
-    
-}
+
 
 @end
