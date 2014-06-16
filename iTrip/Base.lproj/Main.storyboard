@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WBi-u0-9nR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WBi-u0-9nR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -54,16 +54,16 @@
             </objects>
             <point key="canvasLocation" x="-1458" y="-23"/>
         </scene>
-        <!--View Controller - 詳細-->
+        <!--Trip Detail View Controller - 詳細-->
         <scene sceneID="UbJ-bm-ngT">
             <objects>
-                <viewController id="J4j-jh-Mh7" sceneMemberID="viewController">
+                <viewController id="J4j-jh-Mh7" customClass="TripDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nmI-mv-ikd"/>
                         <viewControllerLayoutGuide type="bottom" id="J5K-4w-igF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GV1-Gq-62m">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名稱：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mX-MY-GIP">
@@ -109,19 +109,82 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-k7-zMw">
+                                <rect key="frame" x="79" y="87" width="221" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Y8-eF-GFZ">
+                                <rect key="frame" x="79" y="188" width="221" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBC-bf-QXg">
+                                <rect key="frame" x="79" y="235" width="221" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="swF-St-6x5">
+                                <rect key="frame" x="79" y="287" width="221" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BY7-c2-jbi">
+                                <rect key="frame" x="96" y="336" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tx1-ak-AQs">
+                                <rect key="frame" x="79" y="387" width="221" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RJN-hD-H2P">
+                                <rect key="frame" x="79" y="138" width="182" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjc-dt-7DM">
+                                <rect key="frame" x="269" y="138" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="地圖">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Hc0-61-pX3" kind="push" identifier="showMap" id="Cs6-pU-7AV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="詳細" id="tWn-D0-nBx"/>
-                    <navigationItem key="navigationItem" title="詳細" id="qRt-3h-KMK"/>
+                    <navigationItem key="navigationItem" title="詳細" id="qRt-3h-KMK">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="pAa-J9-gUL">
+                            <connections>
+                                <segue destination="6rp-bL-57N" kind="unwind" identifier="" unwindAction="unwindToTripList:" id="JGg-WT-zXj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="3cA-k7-zMw" id="vUa-mT-ldl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ved-2v-EQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6rp-bL-57N" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="885" y="1072"/>
+            <point key="canvasLocation" x="613" y="380"/>
         </scene>
         <!--Navigation Controller - 詳細-->
         <scene sceneID="Fdh-It-8sD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G70-KQ-wID" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="RFJ-xg-yoa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="詳細" id="yls-RI-Cio"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6X-3p-TYR">
@@ -131,15 +194,14 @@
                         <segue destination="J4j-jh-Mh7" kind="relationship" relationship="rootViewController" id="zIg-zn-Rat"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G70-KQ-wID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="1072"/>
+            <point key="canvasLocation" x="197" y="1012"/>
         </scene>
-        <!--Tab Bar Controller - 詳細-->
+        <!--Trip Tab Bar View Controller-->
         <scene sceneID="SVY-71-cCO">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="Pms-ZG-3pU" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="詳細" id="KQj-42-cQh"/>
+                <tabBarController definesPresentationContext="YES" id="Pms-ZG-3pU" customClass="TripTabBarViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KQj-42-cQh"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1eR-wW-SG6">
@@ -160,6 +222,7 @@
         <!--Navigation Controller - 記帳-->
         <scene sceneID="HHD-oz-0J8">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K91-L8-aVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Tvv-So-DY6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="記帳" id="0Ib-NL-Ans"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aeB-ro-YXZ">
@@ -169,7 +232,6 @@
                         <segue destination="RaT-Gf-iMh" kind="relationship" relationship="rootViewController" id="yI9-AL-I3Q"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K91-L8-aVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="1932"/>
         </scene>
@@ -178,7 +240,7 @@
             <objects>
                 <tableViewController id="RaT-Gf-iMh" customClass="ChargeListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BBO-M8-dmx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -197,6 +259,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="記帳" id="6Uh-Ro-fVn">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="WLS-gJ-aic">
+                            <connections>
+                                <segue destination="kUx-26-dju" kind="unwind" unwindAction="unwindToTripList:" id="ig9-gZ-OXh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZP2-JV-VxO">
                             <connections>
                                 <action selector="addCharge:" destination="RaT-Gf-iMh" id="e56-qT-cLr"/>
@@ -205,6 +272,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FD-Fa-GUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kUx-26-dju" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="894" y="1925"/>
         </scene>
@@ -213,7 +281,7 @@
             <objects>
                 <tableViewController id="YLe-0N-Hpl" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Upj-OQ-f6L">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -232,6 +300,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="隨手記" id="OMF-Bh-HxI">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="q9a-SB-lDn">
+                            <connections>
+                                <segue destination="kC5-QT-bm0" kind="unwind" unwindAction="unwindToTripList:" id="pxg-Uf-u31"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Csd-2O-qi1">
                             <connections>
                                 <segue destination="dNo-z7-gJi" kind="push" id="tz6-2s-0Wc"/>
@@ -240,6 +313,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsW-NU-zJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kC5-QT-bm0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="882" y="2688"/>
         </scene>
@@ -252,7 +326,7 @@
                         <viewControllerLayoutGuide type="bottom" id="viK-05-zCm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VZT-ul-XYU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-Kd-TqO">
@@ -301,6 +375,7 @@
         <!--Navigation Controller - 隨手記-->
         <scene sceneID="rnG-b3-qPc">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tGh-Hs-Z4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="LpF-p2-RaN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="隨手記" id="Cct-cS-6jn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7x-Ca-RTu">
@@ -310,7 +385,6 @@
                         <segue destination="YLe-0N-Hpl" kind="relationship" relationship="rootViewController" id="xkA-7A-uWw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tGh-Hs-Z4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="350" y="2688"/>
         </scene>
@@ -434,11 +508,11 @@
                         <viewControllerLayoutGuide type="bottom" id="xxl-oM-5P0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jvG-CF-BxW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EUo-F7-XkZ">
-                                <rect key="frame" x="0.0" y="111" width="320" height="457"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="393"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ik0-4D-v5r">
@@ -460,13 +534,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="qcQ-ge-S7k" id="AFe-WC-LRb"/>
                         <outlet property="mapView" destination="EUo-F7-XkZ" id="pGz-u5-3V3"/>
+                        <outlet property="navigationBar" destination="FzH-nh-I5T" id="qfM-Vh-Xcj"/>
+                        <outlet property="searchBar" destination="Ik0-4D-v5r" id="XLa-ev-F8s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcD-kK-6OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="MU9-bP-Fcg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-223" y="-279"/>
+            <point key="canvasLocation" x="1083" y="-23"/>
         </scene>
         <!--Select Date View Controller-->
         <scene sceneID="Gkj-TF-MYU">
@@ -525,7 +602,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-AF-h40" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Iaq-hg-Lxq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-223" y="469"/>
+            <point key="canvasLocation" x="-307" y="617"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9RT-Zo-Oct">
@@ -533,6 +610,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <navigationController definesPresentationContext="YES" id="WBi-u0-9nR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n90-mQ-ogT">
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="j7C-eG-rhz" kind="relationship" relationship="rootViewController" id="0kR-db-bwE"/>
@@ -602,9 +682,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Pms-ZG-3pU" kind="custom" identifier="selectTrip" id="YKR-kC-voL"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -612,10 +689,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="THV-oO-hZo" id="JmB-gr-qIr"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Pms-ZG-3pU" kind="modal" identifier="showDetail" id="Ub7-CY-B2d"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JY-GZ-bQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-804" y="1396"/>
+            <point key="canvasLocation" x="-896" y="1316"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -623,4 +703,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cs6-pU-7AV"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "TripListTableViewController.h"
+#import "TripTabBarViewController.h"
 #import "AppDelegate.h"
 #import "Trip.h"
 
@@ -14,6 +15,7 @@
 
 @property AppDelegate *delegate;
 @property NSMutableArray *trips;
+@property Trip *trip;
 
 @end
 
@@ -77,6 +79,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.trip = [self.trips objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"showDetail" sender:self];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -116,15 +123,14 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    TripTabBarViewController *destinationViewController = segue.destinationViewController;
+    [destinationViewController setTrip:self.trip];
 }
-*/
 
 @end
