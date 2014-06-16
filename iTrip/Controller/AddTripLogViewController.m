@@ -152,7 +152,6 @@
         Trip* trip = tripTabBarViewControll.trip;
         TripLog * tripLog = [[TripLog alloc] init];
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
         
         tripLog.tid = trip.tid;
         tripLog.type = type;

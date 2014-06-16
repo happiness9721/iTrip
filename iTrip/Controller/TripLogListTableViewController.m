@@ -38,13 +38,20 @@
     TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.tabBarController;
     self.trip = tripTabBarViewControll.trip;
 
-    self.tripLogs = [self.delegate getTripLogs:self.trip.tid];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tripLogs = [self.delegate getTripLogs:self.trip.tid];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,16 +74,21 @@
     return [self.delegate getTripLogCount:self.trip.tid];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textCellIdentifier" forIndexPath:indexPath];
     
     // Configure the cell...
+    TripLog* tripLog = [self.tripLogs objectAtIndex:indexPath.row];
+    cell.textLabel.text = tripLog.text;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    cell.detailTextLabel.text = [dateFormatter stringFromDate:tripLog.time];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

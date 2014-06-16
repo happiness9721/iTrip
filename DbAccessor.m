@@ -441,14 +441,14 @@ NSString * const TYPE_LOCATION = @"position";
     tripLog.time = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", time]];
     
     
-    if(typeStr==TYPE_TEXT){
+    if([typeStr isEqualToString: TYPE_TEXT]){
         char *text = (char*)sqlite3_column_text(statement, 2);
         tripLog.text =[NSString stringWithUTF8String:text];
-    }else if(typeStr == TYPE_IMAGE){
+    }else if([typeStr isEqualToString: TYPE_IMAGE]){
         int length = sqlite3_column_bytes(statement, 3);
         NSData* data = [NSData dataWithBytes:sqlite3_column_blob(statement, 3) length:length];
         tripLog.image = [UIImage imageWithData:data];
-    }else if(typeStr == TYPE_LOCATION){
+    }else if([typeStr isEqualToString: TYPE_LOCATION]){
         char *location = (char*)sqlite3_column_text(statement, 4);
         double latitude = sqlite3_column_double(statement, 5);
         double longitude = sqlite3_column_double(statement, 6);
