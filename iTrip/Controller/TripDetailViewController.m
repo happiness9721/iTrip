@@ -9,9 +9,16 @@
 #import "TripDetailViewController.h"
 #import "TripTabBarViewController.h"
 #import "SelectCoordinateViewController.h"
+#import "AppDelegate.h"
 
 @interface TripDetailViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) IBOutlet UITextField *dateTextField;
+@property (strong, nonatomic) IBOutlet UITextField *detailTextField;
+@property (strong, nonatomic) IBOutlet UITextField *budgetTextField;
+@property (strong, nonatomic) IBOutlet UITextField *costTextField;
+@property (strong, nonatomic) IBOutlet UITextField *temperatureTextField;
 
 @end
 
@@ -29,8 +36,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    
     TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.tabBarController;
     self.nameTextField.text = tripTabBarViewControll.trip.name;
+    
+    self.locationTextField.text = tripTabBarViewControll.trip.location;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    self.dateTextField.text = [dateFormat stringFromDate:tripTabBarViewControll.trip.date];
+    self.detailTextField.text = tripTabBarViewControll.trip.detail;
+    self.budgetTextField.text = [NSString stringWithFormat:@"%d",tripTabBarViewControll.trip.budget];
+    int cost = [delegate getChargePaySum:tripTabBarViewControll.trip.tid];
+    self.costTextField.text = [NSString stringWithFormat:@"%d", cost];
+    // self.temperatureTextField.text = [撈天氣溫度API];
+    
     // Do any additional setup after loading the view.
 }
 

@@ -65,7 +65,7 @@
         newTrip.name = self.name.text;
         newTrip.location = self.location.text;
         newTrip.detail = self.detail.text;
-        newTrip.budget = (int)self.budget.text;
+        newTrip.budget = self.budget.text.intValue;
         newTrip.latitude = self.latitude;
         newTrip.longitude = self.longitude;
         newTrip.date = self.selectDate;
