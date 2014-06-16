@@ -10,11 +10,14 @@
 #import "CustomIOS7AlertView.h"
 #import "AppDelegate.h"
 #import "TripTabBarViewController.h"
+#import "ChargeListTableViewController.h"
+#import "Charge.h"
 
 @interface ChargeViewController () <CustomIOS7AlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *budgetText;
 @property (strong, nonatomic) IBOutlet UITextField *costText;
 @property (strong, nonatomic) IBOutlet UITextField *restText;
+@property (strong, nonatomic) IBOutlet UITableViewController *containerViewController;
 
 @end
 
@@ -50,16 +53,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"containerView"])
+    {
+        self.containerViewController = segue.destinationViewController;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 - (IBAction)addCharge:(id)sender
 {
@@ -77,7 +84,25 @@
 - (void)customIOS7dialogButtonTouchUpInside: (CustomIOS7AlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex
 {
     //取消0
-    NSLog(@"Button at position %d is clicked on alertView %d.", buttonIndex, [alertView tag]);
+    if (buttonIndex == 1)
+    {
+        UITextField *nameTextField = (UITextField *)[alertView viewWithTag:5];
+        UITextField *payTextField = (UITextField *)[alertView viewWithTag:6];
+        NSString *name = nameTextField.text;
+        int pay = payTextField.text.intValue;
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.tabBarController;
+        Charge *newCharge = [[Charge alloc] init];
+        newCharge.name = name;
+        newCharge.pay = pay;
+        newCharge.tid = tripTabBarViewControll.trip.tid;
+        [delegate addCharge:newCharge];
+        [(ChargeListTableViewController *)self.containerViewController reloadTableList];
+        int budget = tripTabBarViewControll.trip.budget;
+        int cost = [delegate getChargePaySum:tripTabBarViewControll.trip.tid];
+        self.costText.text = [NSString stringWithFormat:@"%d", cost];
+        self.restText.text = [NSString stringWithFormat:@"%d", budget - cost];
+    }
     [alertView close];
 }
 

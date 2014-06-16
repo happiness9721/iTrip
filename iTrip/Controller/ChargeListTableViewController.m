@@ -7,6 +7,11 @@
 //
 
 #import "ChargeListTableViewController.h"
+#import "CustomIOS7AlertView.h"
+#import "AppDelegate.h"
+#import "TripTabBarViewController.h"
+#import "Trip.h"
+#import "Charge.h"
 
 @interface ChargeListTableViewController ()
 @property NSMutableArray *charges;
@@ -28,21 +33,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.tabBarController;
+    TripTabBarViewController *tripTabBarViewControll = (TripTabBarViewController *)self.parentViewController.tabBarController;
     self.trip = tripTabBarViewControll.trip;
     
     self.charges = [self.delegate getCharges: self.trip.tid];
-
-    
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +62,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.delegate getTripLogCount:self.trip.tid];
+    return [self.delegate getChargeCount:self.trip.tid];
 }
 
 
@@ -76,7 +77,11 @@
     return cell;
 }
 
-
+- (void)reloadTableList
+{
+    self.charges = [self.delegate getCharges: self.trip.tid];
+    [self.tableView reloadData];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
