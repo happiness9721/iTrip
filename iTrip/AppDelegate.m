@@ -11,62 +11,14 @@
 
 @implementation AppDelegate
 
--(void) removeAllTrips{
-    [db removeAllTrips];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     db = [[DbAccessor alloc] init];
-//    [db resetDb];
-    db = [[DbAccessor alloc] init];
-    [db removeAllTrips];
-    [db removeAllCharges];
-    
-    Trip * trip = [[Trip alloc] init];
-    trip.name = @"trip name";
-    trip.detail = @"trip detail";
-    trip.date = [NSDate date];
-    trip.budget = 500;
-    trip.location = @"location";
-    trip.latitude = 23.55;
-    trip.longitude = 123.5555;
-    
-    
-    trip = [db addTrip:trip];
-    
-    [trip printTrip];
-    [db getTrip:1];
-    [db getTrips];
-    [db getTripCount];
-    
-    Charge * charge = [[Charge alloc]init];
-    charge.tid = trip.tid;
-    charge.name = @"charge name";
-    charge.pay = 500;
-    charge.time = [NSDate date];
-    [charge printCharge];
-    [db addCharge:charge];
-    [db addCharge:charge];
-    [db getCharges:trip.tid];
-    int sum = [db getChargePaySum:trip.tid];
-    NSLog(@"Sum = %d", sum);
-    
-    [db getChargeCount: charge.tid];
-    
-    TripLog* tripLog = [[TripLog alloc]init];
-    tripLog.tid = trip.tid;
-    tripLog.type = TYPE_TEXT;
-    tripLog.text = @"text message";
-    tripLog.time = [NSDate date];
-    
-    [tripLog printTripLog];
-    [db addTripLog:tripLog];
-    [db addTripLog:tripLog];
-    [db getTripLogs:trip.tid];
-    [db getTripLogCount:trip.tid];
-    
     return YES;
+}
+
+-(void) removeAllTrips{
+    [db removeAllTrips];
 }
 
 - (void)addTrip: (Trip*) trip

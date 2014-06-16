@@ -61,6 +61,36 @@ NSString * const TYPE_LOCATION = @"position";
     return self;
 }
 
+-(void) addDefaultData
+{
+    Trip * trip = [[Trip alloc] init];
+    trip.name = @"北投文青之旅";
+    trip.detail = @"探索未知";
+    trip.date = [NSDate date];
+    trip.budget = 500;
+    trip.location = @"北投";
+    trip.latitude = 25.131841;
+    trip.longitude = 121.498494;
+    
+    trip = [self addTrip:trip];
+    
+    Charge * charge = [[Charge alloc]init];
+    charge.tid = trip.tid;
+    charge.name = @"車票";
+    charge.pay = 30;
+    charge.time = [NSDate date];
+    [charge printCharge];
+    [self addCharge:charge];
+    
+    TripLog* tripLog = [[TripLog alloc]init];
+    tripLog.tid = trip.tid;
+    tripLog.type = TYPE_TEXT;
+    tripLog.text = @"試著從未知的回憶探索妳過往的足跡";
+    tripLog.time = [NSDate date];
+    
+    [self addTripLog:tripLog];
+}
+
 -(void) resetDb
 {
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
