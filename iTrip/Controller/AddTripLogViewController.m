@@ -11,11 +11,20 @@
 #import "TripTabBarViewController.h"
 #import "DbAccessor.h"
 #import "AppDelegate.h"
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "MyLocation.h"
 
 @interface AddTripLogViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+{
+    CLLocationManager *locationManager;
+}
 @property (weak, nonatomic) IBOutlet UITextField *textTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *actionBarSegmentedControl;
+@property double latitude;
+@property double longitude;
 
 @end
 
@@ -33,6 +42,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [locationManager startUpdatingLocation];
+    MKCoordinateRegion kaos_digital;
+    self.latitude = locationManager.location.coordinate.latitude;
+    self.longitude = locationManager.location.coordinate.longitude;
+    
+    kaos_digital.center.latitude = self.latitude;
+    kaos_digital.center.longitude = self.longitude;
+    // 設定縮放比例
+    kaos_digital.span.latitudeDelta = 0.007;
+    kaos_digital.span.longitudeDelta = 0.007;
+    
+    // 把region設定給MapView
+    [self.mapView setRegion:kaos_digital];
+    MyLocation *myLocation = [[MyLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(self.latitude, self.longitude)];
+    myLocation.title = @"iTrip";
+    myLocation.subtitle = @"媽，我在這裡啦!";
+    [self.mapView addAnnotation:myLocation];
     // Do any additional setup after loading the view.
 }
 
@@ -43,9 +72,13 @@
 }
 - (IBAction)actionBarValueChanged:(id)sender
 {
+    [self.textTextField setHidden:YES];
+    [self.imageView setHidden:YES];
+    [self.mapView setHidden:YES];
     switch (self.actionBarSegmentedControl.selectedSegmentIndex)
     {
         case 0:
+            [self.textTextField setHidden:NO];
             break;
         case 1:
         {
@@ -58,6 +91,7 @@
             
             //以動畫方式顯示圖庫
             [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
+            [self.imageView setHidden:NO];
             break;
         }
         case 2:
@@ -73,22 +107,17 @@
             
             //顯示Picker
             [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
+            [self.imageView setHidden:NO];
+            break;
         }
-            
+        case 3:
+        {
+            [self.mapView setHidden:NO];
+            break;
+        }
         default:
             break;
     }
-}
-
-//按下按鈕時所觸發的函式
-- (IBAction)getFromLibrary:(id)sender {
-    
-    
-}
-
-- (IBAction)onCameraButtonPress:(id)sender {
-    
-    
 }
 
 //使用代理之後才會出現的內建函式
@@ -126,10 +155,6 @@
             tripLog.time = [NSDate date];
             [delegate addTripLog: tripLog];
         }
-        
-        
-
-        
     }
 }
 
