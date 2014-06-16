@@ -11,6 +11,8 @@
 #import "Trip.h"
 #import "TripLog.h"
 #import "TripTabBarViewController.h"
+#import <MapKit/MapKit.h>
+#import "MyLocation.h"
 
 @interface TripLogListTableViewController ()
 @property AppDelegate *delegate;
@@ -83,7 +85,7 @@
     }else if([tripLog.type isEqualToString:TYPE_IMAGE]){
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"imageCellIdentifier"];
     }else if([tripLog.type isEqualToString:TYPE_LOCATION]){
-        
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"locationCellIdentifier"];
     }
     return cell.bounds.size.height;
 }
@@ -109,6 +111,34 @@
         UILabel *timeLabel = (UILabel*)[cell.contentView viewWithTag:2];
         timeLabel.text = [dateFormatter stringFromDate:tripLog.time];
     }else if([tripLog.type isEqualToString:TYPE_LOCATION]){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"locationCellIdentifier" forIndexPath:indexPath];
+        UILabel* textLabel = (UILabel*)[cell.contentView viewWithTag:1];
+        UILabel* timeLabel = (UILabel*)[cell.contentView viewWithTag:2];
+        MKMapView* mapView = (MKMapView*)[cell.contentView viewWithTag:3];
+        textLabel.text = tripLog.text;
+        timeLabel.text = [dateFormatter stringFromDate:tripLog.time];
+        
+        
+        
+        MKCoordinateRegion region;
+        region.center.latitude = tripLog.latitude;
+            region.center.longitude = tripLog.longitude;
+        
+        region.center.latitude = tripLog.latitude;
+        region.center.longitude = tripLog.longitude;
+        
+        // 設定縮放比例
+        region.span.latitudeDelta = 0.007;
+        region.span.longitudeDelta = 0.007;
+        
+        // 把region設定給MapView
+        [mapView setRegion:region];
+        //Move the map and zoom
+        MyLocation *myLocation = [[MyLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(tripLog.latitude, tripLog.longitude)];
+        myLocation.title = @"iTrip";
+        myLocation.subtitle = @"媽，我在這裡啦!";
+        [mapView addAnnotation:myLocation];
+        
         
     }
     
