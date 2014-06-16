@@ -106,16 +106,17 @@
         UIImageView *uiImage = (UIImageView *)[cell.contentView viewWithTag:3];
         [uiImage setImage:tripLog.image];
         
-        UILabel *textLabel = (UILabel*)[cell.contentView viewWithTag:1];
-        textLabel.text = tripLog.text;
+//        UILabel *textLabel = (UILabel*)[cell.contentView viewWithTag:1];
+//        textLabel.text = tripLog.text;
         UILabel *timeLabel = (UILabel*)[cell.contentView viewWithTag:2];
         timeLabel.text = [dateFormatter stringFromDate:tripLog.time];
     }else if([tripLog.type isEqualToString:TYPE_LOCATION]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"locationCellIdentifier" forIndexPath:indexPath];
-        UILabel* textLabel = (UILabel*)[cell.contentView viewWithTag:1];
-        UILabel* timeLabel = (UILabel*)[cell.contentView viewWithTag:2];
+
         MKMapView* mapView = (MKMapView*)[cell.contentView viewWithTag:3];
-        textLabel.text = tripLog.text;
+//        UILabel* textLabel = (UILabel*)[cell.contentView viewWithTag:1];
+//        textLabel.text = tripLog.text;
+        UILabel* timeLabel = (UILabel*)[cell.contentView viewWithTag:2];
         timeLabel.text = [dateFormatter stringFromDate:tripLog.time];
         
         
