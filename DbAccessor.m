@@ -189,7 +189,7 @@ NSString * const TYPE_LOCATION = @"position";
     trip.detail = [NSString stringWithUTF8String: detail];
     trip.date = [dateFormat dateFromString:[NSString stringWithFormat:@"%s", date]];
     trip.budget = budget;
-    trip.location =[NSString stringWithFormat:@"%s", location];
+    trip.location =[NSString stringWithUTF8String: location];
     trip.latitude = latitude;
     trip.longitude = longitude;
     return trip;
