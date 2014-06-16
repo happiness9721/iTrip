@@ -93,18 +93,21 @@
 {
     TripLog* tripLog = [self.tripLogs objectAtIndex:indexPath.row];
     UITableViewCell *cell;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     if([tripLog.type isEqualToString:TYPE_TEXT]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"textCellIdentifier" forIndexPath:indexPath];
         cell.textLabel.text = tripLog.text;
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         cell.detailTextLabel.text = [dateFormatter stringFromDate:tripLog.time];
     }else if([tripLog.type isEqualToString:TYPE_IMAGE]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"imageCellIdentifier" forIndexPath:indexPath];
-        
         UIImageView *uiImage = (UIImageView *)[cell.contentView viewWithTag:3];
         [uiImage setImage:tripLog.image];
-  
+        
+        UILabel *textLabel = (UILabel*)[cell.contentView viewWithTag:1];
+        textLabel.text = tripLog.text;
+        UILabel *timeLabel = (UILabel*)[cell.contentView viewWithTag:2];
+        timeLabel.text = [dateFormatter stringFromDate:tripLog.time];
     }else if([tripLog.type isEqualToString:TYPE_LOCATION]){
         
     }
