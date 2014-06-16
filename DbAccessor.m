@@ -390,30 +390,39 @@ NSString * const TYPE_LOCATION = @"position";
 -(int) addImage:(UIImage*) image
 {
     if(db!=nil){
-//        NSString * budget = [NSString stringWithFormat:@"%d",trip.budget];
-//        NSString * latitude = [NSString stringWithFormat:@"%lf",trip.latitude];
-//        NSString * longitude = [NSString stringWithFormat:@"%lf",trip.longitude];
-//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//        [dateFormat setDateFormat: dbDateFormatString];
-//        NSString *date=[dateFormat stringFromDate:trip.date];
-//        
-//        
-//        const char *createTripLogPicture="create table if not exists TripLogImage (iid integer primary key autoincrement, image blob)";
-//        
-//        sqlite3_stmt * statement;
-//        NSString * sqlStr = [NSString stringWithFormat:@"insert into TripLogImage (image) Values ('%@')", 6];
-//        NSLog(@"addtrip sql = %@", sqlStr);
-//        sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
-//        if(sqlite3_step(statement)==SQLITE_DONE){
-//            NSLog(@"成功加入一筆Trip資料");
-//        }else{
-//            NSLog(@"加入Trip失敗");
-//        }
-//        sqlite3_finalize(statement);
-//        sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(db);
-//        return (int)lastRowId;
+        NSData* data = UIImageJPEGRepresentation(image, 1.0);
+        
+        sqlite3_stmt * statement;
+        char * sql = "insert into TripLogImage Values (1, ?)";
+        sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
+        
+        sqlite3_bind_blob(statement, 1, [data bytes], [data length], NULL);
+        
+        if(sqlite3_step(statement)==SQLITE_DONE){
+            NSLog(@"成功加入一筆Image資料");
+        }else{
+            NSLog(@"加入Image失敗");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(db);
+        return (int)lastRowId;
     }
     return 0;
+}
+
+-(UIImage*) getImage:(int) iid
+{
+    UIImage * image;
+    NSString * sqlStr = [NSString stringWithFormat: @"select * from TripLogImage where tid = %d", iid];
+    
+    sqlite3_stmt * statement;
+    sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+    while(sqlite3_step(statement)==SQLITE_ROW){
+        int length = sqlite3_column_bytes(statement, 1);
+        NSData * data = [NSData dataWithBytes:sqlite3_column_blob(statement, 1) length:length];
+        image = [UIImage imageWithData:data];
+    }
+    return image;
 }
 
 -(TripLog*) statementToTripLog: (sqlite3_stmt*) statement
