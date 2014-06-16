@@ -41,6 +41,53 @@
     return [db getTripCount];
 }
 
+
+
+-(void) addCharge : (Charge*) charge
+{
+    [db addCharge:charge];
+}
+
+-(NSMutableArray*) getCharges:(int) tid
+{
+    return [db getCharges:tid];
+}
+
+-(int) getChargeCount :(int) tid
+{
+    return [db getChargeCount:tid];
+}
+
+-(int) getChargePaySum :(int) tid
+{
+    return [db getChargePaySum:tid];
+}
+
+-(void) removeAllCharges
+{
+    [db removeAllCharges];
+}
+
+-(void) addTripLog : (TripLog*) tripLog
+{
+    [db addTripLog:tripLog];
+}
+
+-(NSMutableArray*) getTripLogs:(int) tid
+{
+    return [db getTripLogs:tid];
+}
+
+-(int) getTripLogCount :(int) tid
+{
+    return [db getTripLogCount:tid];
+}
+
+-(void) removeAllTripLogs
+{
+    [db removeAllTripLogs];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

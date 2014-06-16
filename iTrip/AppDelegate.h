@@ -21,6 +21,17 @@
 -(int) getTripCount;
 -(void) removeAllTrips;
 
+-(void) addCharge : (Charge*) charge;
+-(NSMutableArray*) getCharges:(int) tid;
+-(int) getChargeCount :(int) tid;
+-(int) getChargePaySum :(int) tid;
+-(void) removeAllCharges;
+
+-(void) addTripLog : (TripLog*) tripLog;
+-(NSMutableArray*) getTripLogs:(int) tid;
+-(int) getTripLogCount :(int) tid;
+-(void) removeAllTripLogs;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @end
