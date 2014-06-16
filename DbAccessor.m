@@ -366,7 +366,7 @@ NSString * const TYPE_LOCATION = @"position";
         NSString * sqlStr;
         if(tripLog.type==TYPE_IMAGE){
             int iid = [self addImage: tripLog.image];
-            sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, iid, time) Values ('%d', '%@', '%d', '%@')", tripLog.tid, tripLog.type, iid, time];
+            sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, text, iid, time) Values ('%d', '%@', '%@', '%d', '%@')", tripLog.tid, tripLog.type, tripLog.text, iid, time];
         }else if(tripLog.type== TYPE_TEXT){
             sqlStr = [NSString stringWithFormat:@"insert into TripLog (tid, type, text, time) Values ('%d', '%@', '%@', '%@')", tripLog.tid, tripLog.type, tripLog.text, time];
         }else if(tripLog.type==TYPE_LOCATION){
@@ -389,6 +389,30 @@ NSString * const TYPE_LOCATION = @"position";
 
 -(int) addImage:(UIImage*) image
 {
+    if(db!=nil){
+//        NSString * budget = [NSString stringWithFormat:@"%d",trip.budget];
+//        NSString * latitude = [NSString stringWithFormat:@"%lf",trip.latitude];
+//        NSString * longitude = [NSString stringWithFormat:@"%lf",trip.longitude];
+//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//        [dateFormat setDateFormat: dbDateFormatString];
+//        NSString *date=[dateFormat stringFromDate:trip.date];
+//        
+//        
+//        const char *createTripLogPicture="create table if not exists TripLogImage (iid integer primary key autoincrement, image blob)";
+//        
+//        sqlite3_stmt * statement;
+//        NSString * sqlStr = [NSString stringWithFormat:@"insert into TripLogImage (image) Values ('%@')", 6];
+//        NSLog(@"addtrip sql = %@", sqlStr);
+//        sqlite3_prepare_v2(db, [sqlStr UTF8String], -1, &statement, NULL);
+//        if(sqlite3_step(statement)==SQLITE_DONE){
+//            NSLog(@"成功加入一筆Trip資料");
+//        }else{
+//            NSLog(@"加入Trip失敗");
+//        }
+//        sqlite3_finalize(statement);
+//        sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(db);
+//        return (int)lastRowId;
+    }
     return 0;
 }
 

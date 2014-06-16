@@ -20,6 +20,7 @@
 		2A000FE6194AD72900FB5289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A000FC8194AD72900FB5289 /* UIKit.framework */; };
 		2A000FEE194AD72900FB5289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A000FEC194AD72900FB5289 /* InfoPlist.strings */; };
 		2A000FF0194AD72900FB5289 /* iTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A000FEF194AD72900FB5289 /* iTripTests.m */; };
+		2A199EA2194F2945000ED343 /* TripLogListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A199EA1194F2945000ED343 /* TripLogListTableViewController.m */; };
 		2A321A6E194C43F800B599BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A321A6D194C43F800B599BF /* libsqlite3.dylib */; };
 		2A321A71194C461200B599BF /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A70194C461200B599BF /* AddTripViewController.m */; };
 		2A321AA2194C527700B599BF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A321A9A194C527700B599BF /* Trip.m */; };
@@ -68,6 +69,8 @@
 		2A000FEB194AD72900FB5289 /* iTripTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTripTests-Info.plist"; sourceTree = "<group>"; };
 		2A000FED194AD72900FB5289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A000FEF194AD72900FB5289 /* iTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTripTests.m; sourceTree = "<group>"; };
+		2A199EA0194F2945000ED343 /* TripLogListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripLogListTableViewController.h; sourceTree = "<group>"; };
+		2A199EA1194F2945000ED343 /* TripLogListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripLogListTableViewController.m; sourceTree = "<group>"; };
 		2A321A6D194C43F800B599BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2A321A6F194C461200B599BF /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
 		2A321A70194C461200B599BF /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				D8CD3593194EEDEF00CFA7A5 /* AddTripLogViewController.m */,
 				D8CD3595194F0F1C00CFA7A5 /* ChargeViewController.h */,
 				D8CD3596194F0F1C00CFA7A5 /* ChargeViewController.m */,
+				2A199EA0194F2945000ED343 /* TripLogListTableViewController.h */,
+				2A199EA1194F2945000ED343 /* TripLogListTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A199EA2194F2945000ED343 /* TripLogListTableViewController.m in Sources */,
 				D81EC696194D97A7009D7563 /* SelectDateViewController.m in Sources */,
 				D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */,
 				D8CD3597194F0F1C00CFA7A5 /* ChargeViewController.m in Sources */,
