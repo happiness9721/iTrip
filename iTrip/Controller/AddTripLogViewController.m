@@ -18,6 +18,7 @@
 @interface AddTripLogViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     CLLocationManager *locationManager;
+    NSString * type;
 }
 @property (weak, nonatomic) IBOutlet UITextField *textTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -62,6 +63,8 @@
     myLocation.title = @"iTrip";
     myLocation.subtitle = @"媽，我在這裡啦!";
     [self.mapView addAnnotation:myLocation];
+    
+    type = TYPE_TEXT;
     // Do any additional setup after loading the view.
 }
 
@@ -79,6 +82,7 @@
     {
         case 0:
             [self.textTextField setHidden:NO];
+            type = TYPE_TEXT;
             break;
         case 1:
         {
@@ -92,6 +96,7 @@
             //以動畫方式顯示圖庫
             [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
             [self.imageView setHidden:NO];
+            type = TYPE_IMAGE;
             break;
         }
         case 2:
@@ -108,11 +113,13 @@
             //顯示Picker
             [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
             [self.imageView setHidden:NO];
+            type = TYPE_IMAGE;
             break;
         }
         case 3:
         {
             [self.mapView setHidden:NO];
+            type = TYPE_LOCATION;
             break;
         }
         default:
@@ -146,15 +153,24 @@
         TripLog * tripLog = [[TripLog alloc] init];
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-        if(self.imageView.image)
+        
+        tripLog.tid = trip.tid;
+        tripLog.type = type;
+        tripLog.text = self.textTextField.text;
+        tripLog.time = [NSDate date];
+        if([type isEqualToString:TYPE_TEXT]){
+        }else if([type isEqualToString:TYPE_IMAGE])
         {
-            tripLog.tid = trip.tid;
-            tripLog.type = TYPE_IMAGE;
-            tripLog.image = self.imageView.image;
-            tripLog.text = self.textTextField.text;
-            tripLog.time = [NSDate date];
-            [delegate addTripLog: tripLog];
+            if(self.imageView.image)
+            {
+                tripLog.image = self.imageView.image;
+            }
+        }else if ([type isEqualToString:TYPE_LOCATION])
+        {
+            tripLog.latitude = self.latitude;
+            tripLog.longitude = self.longitude;
         }
+        [delegate addTripLog: tripLog];
     }
 }
 
