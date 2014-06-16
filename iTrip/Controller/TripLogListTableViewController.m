@@ -74,19 +74,34 @@
     return [self.delegate getTripLogCount:self.trip.tid];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    TripLog* tripLog = [self.tripLogs objectAtIndex:indexPath.row];
+    if([tripLog.type isEqualToString:TYPE_TEXT]){
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"textCellIdentifier"];
+    }else if([tripLog.type isEqualToString:TYPE_IMAGE]){
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"imageCellIdentifier"];
+    }else if([tripLog.type isEqualToString:TYPE_LOCATION]){
+        
+    }
+    return cell.bounds.size.height;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textCellIdentifier" forIndexPath:indexPath];
-    
-    // Configure the cell...
     TripLog* tripLog = [self.tripLogs objectAtIndex:indexPath.row];
+    UITableViewCell *cell;
     if([tripLog.type isEqualToString:TYPE_TEXT]){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"textCellIdentifier" forIndexPath:indexPath];
         cell.textLabel.text = tripLog.text;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         cell.detailTextLabel.text = [dateFormatter stringFromDate:tripLog.time];
     }else if([tripLog.type isEqualToString:TYPE_IMAGE]){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"imageCellIdentifier" forIndexPath:indexPath];
+        
         UIImageView *uiImage = (UIImageView *)[cell.contentView viewWithTag:3];
         [uiImage setImage:tripLog.image];
   
