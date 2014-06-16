@@ -31,6 +31,7 @@
 		2AEE291E194AF6A400146CDB /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE291D194AF6A400146CDB /* ChargeListTableViewController.m */; };
 		D81EC696194D97A7009D7563 /* SelectDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D81EC695194D97A7009D7563 /* SelectDateViewController.m */; };
 		D879A6F8194D7E8200FFA52C /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D879A6F7194D7E8200FFA52C /* MyLocation.m */; };
+		D8CD3594194EEDEF00CFA7A5 /* AddTripLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CD3593194EEDEF00CFA7A5 /* AddTripLogViewController.m */; };
 		D8DC9778194DD7AB002E4C23 /* TripTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DC9777194DD7AB002E4C23 /* TripTabBarViewController.m */; };
 		D8DC977B194DE4AB002E4C23 /* TripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DC977A194DE4AB002E4C23 /* TripDetailViewController.m */; };
 		D8FD3C29194C341600A930B7 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3C28194C341600A930B7 /* CustomIOS7AlertView.m */; };
@@ -87,6 +88,8 @@
 		D81EC695194D97A7009D7563 /* SelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateViewController.m; sourceTree = "<group>"; };
 		D879A6F6194D7E8200FFA52C /* MyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
 		D879A6F7194D7E8200FFA52C /* MyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
+		D8CD3592194EEDEF00CFA7A5 /* AddTripLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripLogViewController.h; sourceTree = "<group>"; };
+		D8CD3593194EEDEF00CFA7A5 /* AddTripLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripLogViewController.m; sourceTree = "<group>"; };
 		D8DC9776194DD7AB002E4C23 /* TripTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTabBarViewController.h; sourceTree = "<group>"; };
 		D8DC9777194DD7AB002E4C23 /* TripTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTabBarViewController.m; sourceTree = "<group>"; };
 		D8DC9779194DE4AB002E4C23 /* TripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailViewController.h; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				D8DC9777194DD7AB002E4C23 /* TripTabBarViewController.m */,
 				D8DC9779194DE4AB002E4C23 /* TripDetailViewController.h */,
 				D8DC977A194DE4AB002E4C23 /* TripDetailViewController.m */,
+				D8CD3592194EEDEF00CFA7A5 /* AddTripLogViewController.h */,
+				D8CD3593194EEDEF00CFA7A5 /* AddTripLogViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 				2A000FD5194AD72900FB5289 /* AppDelegate.m in Sources */,
 				D8DC977B194DE4AB002E4C23 /* TripDetailViewController.m in Sources */,
 				2AEE291B194ADD7D00146CDB /* EmptyTripViewController.m in Sources */,
+				D8CD3594194EEDEF00CFA7A5 /* AddTripLogViewController.m in Sources */,
 				2A321A71194C461200B599BF /* AddTripViewController.m in Sources */,
 				D8FD3C2E194C3BE500A930B7 /* SelectCoordinateViewController.m in Sources */,
 				2A321AA4194C527700B599BF /* DbAccessor.m in Sources */,
