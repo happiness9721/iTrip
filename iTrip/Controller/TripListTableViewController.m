@@ -72,8 +72,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
     
     Trip *trip = [self.trips objectAtIndex:indexPath.row];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString=[dateFormat stringFromDate:trip.date];
     
-    [cell.textLabel setText:trip.name];
+    
+    UILabel *nameLabel = (UILabel *)[cell.contentView viewWithTag:10];
+    [nameLabel setText:trip.name];
+    UILabel *dateLabel = (UILabel *)[cell.contentView viewWithTag:11];
+    [dateLabel setText:dateString];
+    
+    
+    //[cell.textLabel setText:trip.name];
     //[cell.detailTextLabel setText:@"12345"];
     
     return cell;

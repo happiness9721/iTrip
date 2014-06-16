@@ -38,9 +38,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.selectDate =[NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    [self.date setTitle:[dateFormatter stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+    [self.date setTitle:[dateFormatter stringFromDate:self.selectDate] forState:UIControlStateNormal];
     [self.date sizeToFit];
     // Do any additional setup after loading the view.
 }
