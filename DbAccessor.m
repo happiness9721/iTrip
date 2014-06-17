@@ -391,7 +391,6 @@ NSString * const TYPE_LOCATION = @"position";
 {
     if(db!=nil){
         NSData* data = UIImageJPEGRepresentation(image, 1.0);
-        
         sqlite3_stmt * statement;
         char * sql = "insert into TripLogImage (image) Values (?)";
         sqlite3_prepare_v2(db, sql, -1, &statement, NULL);

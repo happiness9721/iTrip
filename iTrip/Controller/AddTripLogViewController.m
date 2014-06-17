@@ -19,11 +19,14 @@
 {
     CLLocationManager *locationManager;
     NSString * type;
+    UIImage * cachedImage;
 }
 @property (weak, nonatomic) IBOutlet UITextField *textTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *actionBarSegmentedControl;
+@property (weak, nonatomic) IBOutlet UILabel *filterLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *filterSwitch;
 @property double latitude;
 @property double longitude;
 
@@ -64,6 +67,9 @@
     myLocation.subtitle = @"媽，我在這裡啦!";
     [self.mapView addAnnotation:myLocation];
     
+    [self.filterLabel setHidden:YES];
+    [self.filterSwitch setHidden:YES];
+    
     type = TYPE_TEXT;
     // Do any additional setup after loading the view.
 }
@@ -78,6 +84,8 @@
     [self.textTextField setHidden:YES];
     [self.imageView setHidden:YES];
     [self.mapView setHidden:YES];
+    [self.filterLabel setHidden:YES];
+    [self.filterSwitch setHidden:YES];
     switch (self.actionBarSegmentedControl.selectedSegmentIndex)
     {
         case 0:
@@ -96,6 +104,8 @@
             //以動畫方式顯示圖庫
             [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
             [self.imageView setHidden:NO];
+            [self.filterLabel setHidden:NO];
+            [self.filterSwitch setHidden:NO];
             type = TYPE_IMAGE;
             break;
         }
@@ -113,6 +123,8 @@
             //顯示Picker
             [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
             [self.imageView setHidden:NO];
+            [self.filterLabel setHidden:NO];
+            [self.filterSwitch setHidden:NO];
             type = TYPE_IMAGE;
             break;
         }
@@ -126,13 +138,34 @@
             break;
     }
 }
+- (IBAction)filterSwitchChanged:(id)sender {
+    if(self.filterSwitch.isOn){
+        // 讀取原始照片並轉換為CIImage格式
+        CIImage *inputImage = [[CIImage alloc] initWithImage:cachedImage];
+        
+        //製作CoreImage的CIFilter定義使用的影像濾鏡
+        CIFilter *filter = [CIFilter filterWithName:@"CIColorMonochrome"];
+        [filter setDefaults];
+        [filter setValue:inputImage forKey:kCIInputImageKey];
+        [filter setValue:[CIColor colorWithRed:1 green:1 blue:1] forKey:@"inputColor"];
+        
+        
+        //取得處理結果並且將CIImage轉換成UIImage
+        CIImage * coreImage = [filter outputImage];
+        CIContext *context = [CIContext contextWithOptions:nil];
+        self.imageView.image = [UIImage imageWithCGImage:[context createCGImage:coreImage fromRect:coreImage.extent]];
+    }else
+    {
+        self.imageView.image = cachedImage;
+    }
+}
 
 //使用代理之後才會出現的內建函式
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     //取得影像
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    
+    cachedImage = image;
     [self.imageView setImage:image];
     
     //移除Picker
@@ -162,29 +195,7 @@
         {
             if(self.imageView.image)
             {
-                // 讀取原始照片並轉換為CIImage格式
-                CIImage *inputImage = [[CIImage alloc] initWithImage:self.imageView.image];
-                
-                //製作CoreImage的CIFilter定義使用的影像濾鏡
-//                CIFilter *sepiaFilter =  [CIFilter filterWithName:@"CISepiaTone"
-//                                                    keysAndValues:kCIInputImageKey, inputImage,
-//                                          @"inputIntensity", [NSNumber numberWithFloat:0.5],
-//                                          nil];
-                CIFilter *filter = [CIFilter filterWithName:@"CIColorMonochrome"];
-                [filter setDefaults];
-                [filter setValue:inputImage forKey:kCIInputImageKey];
-                [filter setValue:[CIColor colorWithRed:1 green:1 blue:1] forKey:@"inputColor"];
-                
-                
-                
-                
-                
-                //取得處理結果並且將CIImage轉換成UIImage
-                CIImage * coreImage = [filter outputImage];
-                CIContext *context = [CIContext contextWithOptions:nil];
-                UIImage * image = [UIImage imageWithCGImage:[context createCGImage:coreImage fromRect:coreImage.extent]];
-                
-                tripLog.image = image;
+                tripLog.image = self.imageView.image;
             }
         }else if ([type isEqualToString:TYPE_LOCATION])
         {

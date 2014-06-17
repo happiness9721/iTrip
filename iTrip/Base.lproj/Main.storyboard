@@ -198,7 +198,6 @@
         <!--Navigation Controller - 詳細-->
         <scene sceneID="Fdh-It-8sD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G70-KQ-wID" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="RFJ-xg-yoa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="詳細" id="yls-RI-Cio"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6X-3p-TYR">
@@ -208,6 +207,7 @@
                         <segue destination="J4j-jh-Mh7" kind="relationship" relationship="rootViewController" id="zIg-zn-Rat"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G70-KQ-wID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="197" y="1012"/>
         </scene>
@@ -513,6 +513,20 @@
                                 <rect key="frame" x="70" y="127" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-a2-sBp">
+                                <rect key="frame" x="102" y="318" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="filterSwitchChanged:" destination="dNo-z7-gJi" eventType="valueChanged" id="uNz-1K-hPV"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="黑白濾鏡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6B-ZE-poy">
+                                <rect key="frame" x="20" y="322" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -525,6 +539,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actionBarSegmentedControl" destination="nC6-bo-eeT" id="3N5-nd-TQD"/>
+                        <outlet property="filterLabel" destination="R6B-ZE-poy" id="mfi-gX-hYS"/>
+                        <outlet property="filterSwitch" destination="ubV-a2-sBp" id="3r8-cC-xr7"/>
                         <outlet property="imageView" destination="R93-Tt-44d" id="L0U-ia-Ptg"/>
                         <outlet property="mapView" destination="CWe-Fe-XVt" id="APw-ot-C4j"/>
                         <outlet property="textTextField" destination="gMd-Kd-TqO" id="vI8-Vp-JSu"/>
