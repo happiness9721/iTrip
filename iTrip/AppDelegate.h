@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Trip.h"
 #import "DbAccessor.h"
+#import "Weather.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
+
     DbAccessor * db;
 }
+
+@property Weather * weather;
 
 -(void) addTrip :(Trip*) trip;
 -(Trip*) getTrip :(int) tid;

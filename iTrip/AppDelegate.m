@@ -8,16 +8,16 @@
 
 #import "AppDelegate.h"
 
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     db = [[DbAccessor alloc] init];
+    self.weather = [[Weather alloc] init];
 //    [db resetDb];
 //    db = [[DbAccessor alloc] init];
 //    [db addDefaultData];
-    return YES;
+      return YES;
 }
 
 -(void) removeAllTrips{

@@ -50,9 +50,16 @@
     self.budgetTextField.text = [NSString stringWithFormat:@"%d",tripTabBarViewControll.trip.budget];
     int cost = [delegate getChargePaySum:tripTabBarViewControll.trip.tid];
     self.costTextField.text = [NSString stringWithFormat:@"%d", cost];
-    // self.temperatureTextField.text = [撈天氣溫度API];
     
-    // Do any additional setup after loading the view.
+    
+    
+    Trip * trip = [[Trip alloc] init];
+    trip.latitude = 25.131841;
+    trip.longitude = 121.498494;
+    [delegate.weather currentWeatherByTrip:trip andCallBack:^(NSString *cityName, NSNumber *temp) {
+        NSString * tempStr = [NSString stringWithFormat:@"現在溫度(%.2lf)℃", [temp doubleValue]];
+        self.temperatureTextField.text = tempStr;
+    }];
 }
 
 - (void)didReceiveMemoryWarning
