@@ -51,13 +51,8 @@
     int cost = [delegate getChargePaySum:tripTabBarViewControll.trip.tid];
     self.costTextField.text = [NSString stringWithFormat:@"%d", cost];
     
-    
-    
-    Trip * trip = [[Trip alloc] init];
-    trip.latitude = 25.131841;
-    trip.longitude = 121.498494;
-    [delegate.weather currentWeatherByTrip:trip andCallBack:^(NSString *cityName, NSNumber *temp) {
-        NSString * tempStr = [NSString stringWithFormat:@"現在溫度(%.2lf)℃", [temp doubleValue]];
+    [delegate.weather currentWeatherByTrip:tripTabBarViewControll.trip andCallBack:^(NSString *cityName, NSNumber *temp) {
+        NSString * tempStr = [NSString stringWithFormat:@"現在%@溫度(%.2lf)℃", tripTabBarViewControll.trip.location, [temp doubleValue]];
         self.temperatureTextField.text = tempStr;
     }];
 }

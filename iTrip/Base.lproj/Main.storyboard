@@ -198,6 +198,7 @@
         <!--Navigation Controller - 詳細-->
         <scene sceneID="Fdh-It-8sD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G70-KQ-wID" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="RFJ-xg-yoa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="詳細" id="yls-RI-Cio"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6X-3p-TYR">
@@ -207,7 +208,6 @@
                         <segue destination="J4j-jh-Mh7" kind="relationship" relationship="rootViewController" id="zIg-zn-Rat"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G70-KQ-wID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="197" y="1012"/>
         </scene>
@@ -297,7 +297,7 @@
         <!--Trip Tab Bar View Controller-->
         <scene sceneID="SVY-71-cCO">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="Pms-ZG-3pU" customClass="TripTabBarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TripTabBarViewController" definesPresentationContext="YES" id="Pms-ZG-3pU" customClass="TripTabBarViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="KQj-42-cQh"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -916,7 +916,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="Pms-ZG-3pU" kind="modal" identifier="showDetail" id="Ub7-CY-B2d"/>
+                        <segue destination="Pms-ZG-3pU" kind="modal" identifier="showDetail" id="qSQ-hW-HsF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JY-GZ-bQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -930,6 +930,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sCM-pT-Jwx"/>
+        <segue reference="Cs6-pU-7AV"/>
     </inferredMetricsTieBreakers>
 </document>

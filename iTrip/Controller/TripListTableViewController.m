@@ -103,7 +103,7 @@
     timeLabel.text = dateString;
     budgetLabel.text = [NSString stringWithFormat:@"預算:%d", trip.budget];
     int cost = [self.delegate getChargePaySum:trip.tid];
-    restLabel.text = [NSString stringWithFormat:@"剩餘:%d", trip.budget-cost];
+    restLabel.text = [NSString stringWithFormat:@"尚餘:%d", trip.budget-cost];
     
     
 //    [cell.textLabel setText:trip.name];
@@ -137,7 +137,8 @@
 //    return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.trip = [self.trips objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"showDetail" sender:self];
