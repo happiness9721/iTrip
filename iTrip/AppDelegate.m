@@ -14,9 +14,9 @@
 {
     db = [[DbAccessor alloc] init];
     self.weather = [[Weather alloc] init];
-//    [db resetDb];
-//    db = [[DbAccessor alloc] init];
-//    [db addDefaultData];
+    [db resetDb];
+    db = [[DbAccessor alloc] init];
+    [db addDefaultData];
       return YES;
 }
 

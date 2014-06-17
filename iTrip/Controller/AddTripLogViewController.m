@@ -162,7 +162,29 @@
         {
             if(self.imageView.image)
             {
-                tripLog.image = self.imageView.image;
+                // 讀取原始照片並轉換為CIImage格式
+                CIImage *inputImage = [[CIImage alloc] initWithImage:self.imageView.image];
+                
+                //製作CoreImage的CIFilter定義使用的影像濾鏡
+//                CIFilter *sepiaFilter =  [CIFilter filterWithName:@"CISepiaTone"
+//                                                    keysAndValues:kCIInputImageKey, inputImage,
+//                                          @"inputIntensity", [NSNumber numberWithFloat:0.5],
+//                                          nil];
+                CIFilter *filter = [CIFilter filterWithName:@"CIColorMonochrome"];
+                [filter setDefaults];
+                [filter setValue:inputImage forKey:kCIInputImageKey];
+                [filter setValue:[CIColor colorWithRed:1 green:1 blue:1] forKey:@"inputColor"];
+                
+                
+                
+                
+                
+                //取得處理結果並且將CIImage轉換成UIImage
+                CIImage * coreImage = [filter outputImage];
+                CIContext *context = [CIContext contextWithOptions:nil];
+                UIImage * image = [UIImage imageWithCGImage:[context createCGImage:coreImage fromRect:coreImage.extent]];
+                
+                tripLog.image = image;
             }
         }else if ([type isEqualToString:TYPE_LOCATION])
         {
