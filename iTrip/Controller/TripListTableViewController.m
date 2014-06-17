@@ -100,7 +100,7 @@
     UILabel * budgetLabel = (UILabel*) [cell.contentView viewWithTag:3];
     UILabel * restLabel = (UILabel*) [cell.contentView viewWithTag:4];
     nameLabel.text = trip.name;
-    timeLabel.text = dateString;
+    timeLabel.text =[self getDateDiff: trip.date];// dateString;
     budgetLabel.text = [NSString stringWithFormat:@"預算:%d", trip.budget];
     int cost = [self.delegate getChargePaySum:trip.tid];
     restLabel.text = [NSString stringWithFormat:@"尚餘:%d", trip.budget-cost];
@@ -135,6 +135,33 @@
 //    
 //    
 //    return cell;
+}
+
+-(NSString*) getDateDiff: (NSDate*) dateTime
+{
+    NSString* str;
+    NSDate *fromDate = [NSDate date];
+    NSDate *toDate = dateTime;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+                 interval:NULL forDate:toDate];
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    NSInteger integer = [difference day];
+    if(integer >0){
+        str = [NSString stringWithFormat:@"還剩下%d天", integer];
+    }else if(integer==0){
+        str = @"活動就在今天";
+    }else
+    {
+        str = [NSString stringWithFormat:@"活動已經過了%d天", -integer];
+    }
+    return str;
 }
 
 
